@@ -67,7 +67,7 @@ Future<void> setup({required AppEnvironment environment}) async {
     ..registerSingletonWithDependencies(AppRouter.new, dependsOn: [AppStates])
     ..registerSingletonAsync<ThemeServiceProvider>(() async {
       await Hive.openBox<bool>('themeMode');
-      final isDark = Hive.box<bool>('themeMode').get('isDark') ?? false;
+      final isDark = Hive.box<bool>('themeMode').get('isDark') ?? true;
       ThemeServiceProvider.setSystemUIOverlayStyle(isDark: isDark);
       return ThemeServiceProvider(isDark: isDark);
     })

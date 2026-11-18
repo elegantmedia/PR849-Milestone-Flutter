@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -17,16 +16,17 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _acceptedTerms = false;
 
   late final TextEditingController _emailController;
+  late final TextEditingController _firstNameController;
+  late final TextEditingController _lastNameController;
   late final TextEditingController _passwordController;
-  late final TextEditingController _phoneController;
 
   late final FocusNode _emailFocusNode;
+  late final FocusNode _firstNameFocusNode;
+  late final FocusNode _lastNameFocusNode;
   late final FocusNode _passwordFocusNode;
-  late final FocusNode _phoneFocusNode;
-
-  final String _countryCode = GetIt.instance<AppSettings>().countryCodes.first;
 
   final AuthService authService = GetIt.instance<AuthService>();
 
@@ -39,12 +39,16 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   void initState() {
     _emailController = TextEditingController();
+    _firstNameController = TextEditingController();
+    _lastNameController = TextEditingController();
     _passwordController = TextEditingController();
-    _phoneController = TextEditingController();
     _emailFocusNode = FocusNode();
+    _firstNameFocusNode = FocusNode();
+    _lastNameFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();
-    _phoneFocusNode = FocusNode();
-    _authStateSubscription = authService.onAuthStateChanges.listen(onAuthStateChanged);
+    _authStateSubscription = authService.onAuthStateChanges.listen(
+      onAuthStateChanged,
+    );
     super.initState();
   }
 
@@ -68,11 +72,13 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   void dispose() {
     _emailController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     _passwordController.dispose();
-    _phoneController.dispose();
     _emailFocusNode.dispose();
+    _firstNameFocusNode.dispose();
+    _lastNameFocusNode.dispose();
     _passwordFocusNode.dispose();
-    _phoneFocusNode.dispose();
     unawaited(_authStateSubscription.cancel());
     super.dispose();
   }
@@ -85,8 +91,9 @@ class _SignUpPageState extends State<SignUpPage> {
         return AbsorbPointer(
           absorbing: snapshot.data is AuthLoading,
           child: Scaffold(
-            appBar: AppBar(
-              title: Text(context.l10n.signUp),
+            appBar: const CommonAppBar(
+              content: CommonAppBarContent.logo,
+              showBackButton: true,
             ),
             body: AutofillGroup(
               child: Form(
@@ -94,68 +101,120 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: ExtendedColumn(
                   children: [
                     const RelativeGap(mainAxisExtent: 0.05),
+                    Text(
+                      context.l10n.signUp,
+                      style: context.headline1(),
+                    ),
+                    const RelativeGap(mainAxisExtent: 0.02),
                     AuthFormFields.email(
                       controller: _emailController,
+                      hintText: context.l10n.enterEmailHint,
                       focusNode: _emailFocusNode,
                       textInputAction: TextInputAction.next,
                       onFieldSubmitted: (_) {
-                        FocusScope.of(context).requestFocus(_phoneFocusNode);
+                        FocusScope.of(context).requestFocus(_firstNameFocusNode);
                       },
                       title: context.l10n.email,
                     ),
                     Gaps.gapMd16,
+                    CommonTextField(
+                      controller: _firstNameController,
+                      focusNode: _firstNameFocusNode,
+                      title: context.l10n.firstName,
+                      hintText: context.l10n.firstNameRequired,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.next,
+                      validator: (value) => value == null || value.trim().isEmpty ? context.l10n.firstNameRequired : null,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_lastNameFocusNode);
+                      },
+                    ),
+                    Gaps.gapMd16,
+                    CommonTextField(
+                      controller: _lastNameController,
+                      focusNode: _lastNameFocusNode,
+                      title: context.l10n.lastName,
+                      hintText: context.l10n.lastNameRequired,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.next,
+                      validator: (value) => value == null || value.trim().isEmpty ? context.l10n.lastNameRequired : null,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_passwordFocusNode);
+                      },
+                    ),
+                    Gaps.gapMd16,
                     AuthFormFields.password(
                       controller: _passwordController,
+                      hintText: context.l10n.enterPassword,
                       focusNode: _passwordFocusNode,
                       textInputAction: TextInputAction.done,
                       title: context.l10n.password,
                       requireStrict: false,
-                      autofillHints: const [
-                        AutofillHints.newPassword,
+                      autofillHints: const [AutofillHints.newPassword],
+                    ),
+                    Gaps.gapLg24,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Semantics(
+                          label: '${context.l10n.agreeTo}${context.l10n.termsOfService}',
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 2),
+                            child: Checkbox(
+                            value: _acceptedTerms,
+                            activeColor: context.colorScheme.secondary,
+                            side: BorderSide(color: context.colorScheme.secondary),
+                            visualDensity: VisualDensity.compact,
+                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            onChanged: (value) {
+                              setState(() {
+                                _acceptedTerms = value ?? false;
+                              });
+                            },
+                          ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(
+                              text: context.l10n.agreeTo,
+                              style: context.bodyDefault(),
+                              children: [
+                                TextSpan(
+                                  text: context.l10n.termsOfService,
+                                  style: context
+                                      .bodyDefault(
+                                        color: context.colorScheme.secondary,
+                                      )
+                                      .bold,
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // TODO(ishanga): Add Terms and Conditions page
+                                    },
+                                ),
+                                TextSpan(text: context.l10n.termsAndPrivacyConfirm),
+                                TextSpan(
+                                  text: context.l10n.privacyPolicy,
+                                  style: context
+                                      .bodyDefault(
+                                        color: context.colorScheme.secondary,
+                                      )
+                                      .bold,
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // TODO(ishanga): Add Privacy Policy page
+                                    },
+                                ),
+                                const TextSpan(text: '.'),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                    Gaps.gapMd16,
-                    PhoneFormField(
-                      phoneNumberController: _phoneController,
-                      phoneFocusNode: _phoneFocusNode,
-                      textInputAction: TextInputAction.next,
-                      onFieldSubmitted: (_) {
-                        FocusScope.of(context).requestFocus(_passwordFocusNode);
-                      },
-                      autofillHints: null,
-                    ),
-                    Gaps.gapLg24,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          text: context.l10n.agreeTo,
-                          style: context.bodyDefault(),
-                          children: [
-                            TextSpan(
-                              text: context.l10n.termsOfService,
-                              style: context.bodyDefault(color: context.colorScheme.secondary).bold,
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  // TODO(ishanga): Add Terms and Conditions page
-                                },
-                            ),
-                            TextSpan(text: context.l10n.termsAndPrivacyConfirm),
-                            TextSpan(
-                              text: context.l10n.privacyPolicy,
-                              style: context.bodyDefault(color: context.colorScheme.secondary).bold,
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  // TODO(ishanga): Add Privacy Policy page
-                                },
-                            ),
-                            const TextSpan(text: '.'),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Gaps.gapLg24,
+                    const Spacer(),
                     CommonButton.primary(
                       isLoading: snapshot.data is AuthLoading,
                       label: context.l10n.verifyAccount,
@@ -163,65 +222,17 @@ class _SignUpPageState extends State<SignUpPage> {
                         if (_formKey.currentState!.validate()) {
                           unawaited(
                             authService.signUp(
-                              _emailController.text,
-                              _passwordController.text,
-                              _countryCode + _phoneController.text,
+                              email: _emailController.text,
+                              firstName: _firstNameController.text.trim(),
+                              lastName: _lastNameController.text.trim(),
+                              password: _passwordController.text,
                             ),
                           );
                         }
+                        //getIt<ThemeServiceProvider>().toggleTheme();
                       },
                     ),
-                    Gaps.gapXxl48,
-                    SizedBox(
-                      width: double.infinity,
-                      child: Center(
-                        child: Text(
-                          context.l10n.orContinueWith,
-                          style: context.bodyDefault(),
-                        ),
-                      ),
-                    ),
                     Gaps.gapMd16,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (Platform.isIOS)
-                          Container(
-                            decoration: BoxDecoration(
-                              color: context.colorScheme.surface,
-                              borderRadius: const BorderRadius.all(Radius.circular(12)),
-                            ),
-                            child: IconButton(
-                              icon: const FaIcon(FontAwesomeIcons.apple),
-                              onPressed: () {},
-                            ),
-                          ),
-                        Gaps.gapMd16,
-                        Container(
-                          decoration: BoxDecoration(
-                            color: context.colorScheme.surface,
-                            borderRadius: const BorderRadius.all(Radius.circular(12)),
-                          ),
-                          child: IconButton(
-                            icon: const FaIcon(FontAwesomeIcons.google),
-                            onPressed: () {},
-                          ),
-                        ),
-                        Gaps.gapMd16,
-                        Container(
-                          decoration: BoxDecoration(
-                            color: context.colorScheme.surface,
-                            borderRadius: const BorderRadius.all(Radius.circular(12)),
-                          ),
-                          child: IconButton(
-                            icon: const FaIcon(FontAwesomeIcons.facebookF),
-                            onPressed: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                    Gaps.gapMd16,
-                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

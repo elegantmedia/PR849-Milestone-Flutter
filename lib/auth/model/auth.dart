@@ -3,12 +3,16 @@ import 'package:milestone/utils/utils.dart';
 class RegisterRequestModel {
   RegisterRequestModel({
     required this.email,
+    required this.firstName,
+    required this.lastName,
     required this.password,
     required this.deviceId,
     required this.deviceType,
     this.devicePushToken,
   });
   String email;
+  String firstName;
+  String lastName;
   String password;
   String deviceId;
   String deviceType;
@@ -17,6 +21,8 @@ class RegisterRequestModel {
   Map<String, dynamic> toJson() {
     return {
       'email': email,
+      'firstName': firstName,
+      'lastName': lastName,
       'password': password,
       'device_id': deviceId,
       'device_type': deviceType,
@@ -30,7 +36,7 @@ class RegisterRequestModel {
 
   @override
   String toString() {
-    return 'RegisterRequestModel(email: $email, password: $password, deviceId: $deviceId, deviceType: $deviceType)';
+    return 'RegisterRequestModel(email: $email, firstName: $firstName, lastName: $lastName, password: $password, deviceId: $deviceId, deviceType: $deviceType)';
   }
 }
 

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:milestone/app/app.dart';
 import 'package:milestone/auth/auth.dart';
+import 'package:milestone/change_password/view/change_password.dart';
+import 'package:milestone/contact_us/contact_us.dart';
+import 'package:milestone/diagnose_my_injury/diagnose_my_injury.dart';
 import 'package:milestone/home/home.dart';
 import 'package:milestone/more/more.dart';
+import 'package:milestone/my_progress/my_progress.dart';
 import 'package:milestone/profile/profile.dart';
 import 'package:milestone/utils/utils.dart';
 
@@ -110,6 +114,16 @@ class AppRouter {
                   key: state.pageKey,
                   child: const HomePage(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: Pages.diagnoseMyInjury.toPath(isSubRoute: true),
+                    name: Pages.diagnoseMyInjury.toPathName(),
+                    pageBuilder: (context, state) => MaterialPage(
+                      key: state.pageKey,
+                      child: const DiagnoseMyInjuryView(),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -121,11 +135,11 @@ class AppRouter {
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
                   child: Scaffold(
-                    appBar: AppBar(
-                      title: const Text('Chat'),
+                    appBar: const CommonAppBar(
+                      content: CommonAppBarContent.logo,
                     ),
-                    body: const Center(
-                      child: Text('Chat Page'),
+                    body: Center(
+                      child: Text(context.l10n.programs),
                     ),
                   ),
                 ),
@@ -139,14 +153,7 @@ class AppRouter {
                 name: Pages.explore.toPathName(),
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
-                  child: Scaffold(
-                    appBar: AppBar(
-                      title: const Text('Explore'),
-                    ),
-                    body: const Center(
-                      child: Text('Explore Page'),
-                    ),
-                  ),
+                  child: const MyProgressPage(),
                 ),
               ),
             ],
@@ -168,6 +175,42 @@ class AppRouter {
                     pageBuilder: (context, state) => MaterialPage(
                       key: state.pageKey,
                       child: const MyProfilePage(),
+                    ),
+                    routes: [
+                      GoRoute(
+                        path: Pages.changePassword.toPath(isSubRoute: true),
+                        name: Pages.changePassword.toPathName(),
+                        parentNavigatorKey: _rootNavigatorKey,
+                        pageBuilder: (context, state) => MaterialPage(
+                          key: state.pageKey,
+                          child: const ChangePasswordPage(),
+                        ),
+                      ),
+                      GoRoute(
+                        path: Pages.editProfile.toPath(isSubRoute: true),
+                        name: Pages.editProfile.toPathName(),
+                        parentNavigatorKey: _rootNavigatorKey,
+                        pageBuilder: (context, state) {
+                          final profile = GetIt.instance<UserProfileService>().userProfile;
+
+                          return MaterialPage(
+                            key: state.pageKey,
+                            child: EditProfilePage(
+                              firstName: profile?.firstName ?? '',
+                              lastName: profile?.lastName ?? '',
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: Pages.contactUs.toPath(isSubRoute: true),
+                    name: Pages.contactUs.toPathName(),
+                    parentNavigatorKey: _rootNavigatorKey,
+                    pageBuilder: (context, state) => MaterialPage(
+                      key: state.pageKey,
+                      child: const ContactUsView(),
                     ),
                   ),
                   GoRoute(

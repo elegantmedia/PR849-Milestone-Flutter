@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:milestone/app/app.dart';
 import 'package:milestone/auth/auth.dart';
-import 'package:milestone/l10n/gen/app_localizations.dart';
 import 'package:milestone/profile/profile.dart';
+import 'package:milestone/utils/l10n/gen/app_localizations.dart';
 import 'package:milestone/utils/utils.dart';
 
 class MilestoneApp extends StatefulWidget {
@@ -102,7 +102,12 @@ class _MilestoneAppState extends State<MilestoneApp> {
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               routerConfig: GetIt.instance<AppRouter>().goRouter,
-              builder: (context, child) => OverlayUtility(child: child),
+              builder: (context, child) => SafeArea(
+              left: false,
+              top: false,
+              right: false,
+              child: OverlayUtility(child: child),
+            ),
             ),
           );
         },

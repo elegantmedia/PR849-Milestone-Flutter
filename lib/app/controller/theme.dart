@@ -18,9 +18,9 @@ import 'package:milestone/app/app.dart';
 /// color: Theme.of(context).colorScheme.primary
 /// ```
 class ThemeServiceProvider with ChangeNotifier {
-  ThemeServiceProvider({bool isDark = false}) : _isDark = isDark;
+  ThemeServiceProvider({bool isDark = true}) : _isDark = isDark;
 
-  bool _isDark = false;
+  bool _isDark = true;
   bool get isDark => _isDark;
 
   ThemeData get lightTheme => _lightThemeData();
@@ -30,32 +30,39 @@ class ThemeServiceProvider with ChangeNotifier {
   void toggleTheme() {
     _isDark = !_isDark;
     unawaited(Hive.box<bool>('themeMode').put('isDark', _isDark));
+    //debugPrint('Theme toggled and its $_isDark');
     notifyListeners();
   }
 
   /// **Important**: Don't make colors public
-  final Color _primaryColor = const Color(0xFF127592);
-  final Color _secondaryColor = const Color(0xFF7FD0D3);
-  final Color _lightSurfaceColor = Colors.white;
-  final Color _darkSurfaceColor = const Color(0xFF023047);
-  final Color _lightBackgroundColor = const Color(0xFFF7F7F7);
-  final Color _darkBackgroundColor = const Color(0xFF000000);
+  final Color _primaryColor = const Color(0xFFFFFFFF);
+  final Color _secondaryColor = const Color(0xFF60B4EB);
+  final Color _thirdColor = const Color(0xFF000000);
+  final Color _fourthColor = const Color(0xFF161617);
+  final Color _profilePlaceholderColor = const Color(0xFF262626);
+  final Color _darkBlueGrayColor = const Color(0xFF0B1419);
+  final Color _lightSurfaceColor = const Color(0xFF080808);
+  final Color _darkSurfaceColor = const Color(0xFF080808);
+  final Color _lightBackgroundColor = const Color(0xFF000000);
   final Color _lightShadowColor = const Color(0xFFE2E8F0);
   final Color _darkShadowColor = const Color(0xFF0D1117);
   final Color _errorColor = const Color(0xFFD32F2F);
-  final Color _onSurfaceColor = const Color(0xFF000000);
+  final Color _onSurfaceColor = const Color(0xFFFFFFFF);
   final Color _onSurfaceColorDark = const Color(0xFFF7F7F7);
   final Color _successColorLight = const Color(0xFF2E7D32);
   final Color _successColorDark = const Color(0xFF81C784);
   final Color _warningColorLight = const Color(0xFFED6C02);
   final Color _warningColorDark = const Color(0xFFFFB74D);
-  final Color _lightBorderColor = const Color(0xFFC6DEE0);
   final Color _darkBorderColor = const Color(0xFF262D2E);
   final Color _lightTrackColor = const Color(0xFFE5E7EB);
   final Color _darkTrackColor = const Color(0xFF374151);
+  //final Color _transparent = const Color(0xFF90A4AE);
 
-  Color get shimmersColor => _primaryColor.withValues(alpha: 0.24);
+  Color get shimmersColor => _secondaryColor.withValues(alpha: 0.24);
   Color get shimmerHighlightColor => _secondaryColor.withValues(alpha: 0.2);
+  Color get profilePlaceholderColor => _profilePlaceholderColor;
+  Color get darkBlueGrayColor => _darkBlueGrayColor;
+  Color get darkBorderColor => _darkBorderColor;
 
   Color get successColor => _isDark ? _successColorDark : _successColorLight;
   Color get onSuccessColor => Colors.white;
@@ -71,11 +78,13 @@ class ThemeServiceProvider with ChangeNotifier {
     return ThemeData(
       scaffoldBackgroundColor: _lightBackgroundColor,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: _primaryColor,
+        seedColor: _secondaryColor,
         primary: _primaryColor,
-        onPrimary: Colors.white,
+        onPrimary: Colors.black,
         secondary: _secondaryColor,
         onSecondary: Colors.white,
+        tertiary: _fourthColor,
+        onTertiary: Colors.white,
         surface: _lightSurfaceColor,
         onSurface: _onSurfaceColor,
         shadow: _lightShadowColor,
@@ -86,7 +95,7 @@ class ThemeServiceProvider with ChangeNotifier {
       elevatedButtonTheme: _elevatedButtonThemeData(isDark: false),
       outlinedButtonTheme: _outlinedButtonThemeData(isDark: false),
       textButtonTheme: _textButtonThemeData(isDark: false),
-      inputDecorationTheme: _inputDecorationTheme(isDark: false),
+      inputDecorationTheme: _inputDecorationTheme(),
       appBarTheme: _appBarTheme(),
       iconTheme: _iconThemeData(isDark: false),
       bottomNavigationBarTheme: _bottomNavigationBarThemeData(isDark: false),
@@ -96,14 +105,16 @@ class ThemeServiceProvider with ChangeNotifier {
 
   ThemeData _darkThemeData() {
     return ThemeData(
-      scaffoldBackgroundColor: _darkBackgroundColor,
+      scaffoldBackgroundColor: _darkSurfaceColor,
       colorScheme: ColorScheme.fromSeed(
         brightness: Brightness.dark,
-        seedColor: _primaryColor,
+        seedColor: _secondaryColor,
         primary: _primaryColor,
-        onPrimary: Colors.white,
+        onPrimary: Colors.black,
         secondary: _secondaryColor,
         onSecondary: Colors.white,
+        tertiary: _fourthColor,
+        onTertiary: Colors.white,
         surface: _darkSurfaceColor,
         onSurface: _onSurfaceColorDark,
         shadow: _darkShadowColor,
@@ -114,7 +125,7 @@ class ThemeServiceProvider with ChangeNotifier {
       elevatedButtonTheme: _elevatedButtonThemeData(isDark: true),
       outlinedButtonTheme: _outlinedButtonThemeData(isDark: true),
       textButtonTheme: _textButtonThemeData(isDark: true),
-      inputDecorationTheme: _inputDecorationTheme(isDark: true),
+      inputDecorationTheme: _inputDecorationTheme(),
       appBarTheme: _appBarTheme(),
       iconTheme: _iconThemeData(isDark: true),
       bottomNavigationBarTheme: _bottomNavigationBarThemeData(isDark: true),
@@ -123,16 +134,16 @@ class ThemeServiceProvider with ChangeNotifier {
   }
 
   String? _fontFamily() {
-    return GoogleFonts.poppins().fontFamily;
+    return GoogleFonts.jost().fontFamily;
   }
 
   ElevatedButtonThemeData _elevatedButtonThemeData({required bool isDark}) {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.white,
-        backgroundColor: _primaryColor,
+        foregroundColor: _thirdColor,
+        backgroundColor: _secondaryColor,
         elevation: 0,
-        textStyle: buttonPrimary(_primaryColor),
+        textStyle: buttonPrimary(_thirdColor),
         padding: const EdgeInsets.symmetric(
           vertical: 16,
           horizontal: 24,
@@ -148,10 +159,10 @@ class ThemeServiceProvider with ChangeNotifier {
   OutlinedButtonThemeData _outlinedButtonThemeData({required bool isDark}) {
     return OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: isDark ? _lightSurfaceColor : _primaryColor,
+        foregroundColor: _secondaryColor,
         backgroundColor: isDark ? _darkSurfaceColor : _lightSurfaceColor,
         elevation: 0,
-        textStyle: buttonSecondary(isDark ? _lightSurfaceColor : _primaryColor),
+        textStyle: buttonSecondary(_secondaryColor),
         padding: const EdgeInsets.symmetric(
           vertical: 16,
           horizontal: 24,
@@ -167,9 +178,9 @@ class ThemeServiceProvider with ChangeNotifier {
   TextButtonThemeData _textButtonThemeData({required bool isDark}) {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: _primaryColor,
+        foregroundColor: _secondaryColor,
         elevation: 0,
-        textStyle: buttonTertiary(_primaryColor),
+        textStyle: buttonTertiary(_secondaryColor),
         padding: const EdgeInsets.symmetric(
           vertical: 8,
           horizontal: 12,
@@ -182,7 +193,7 @@ class ThemeServiceProvider with ChangeNotifier {
     );
   }
 
-    IconButtonThemeData _iconButtonThemeData({required bool isDark}) {
+  IconButtonThemeData _iconButtonThemeData({required bool isDark}) {
     return IconButtonThemeData(
       style: IconButton.styleFrom(
         minimumSize: Size.zero,
@@ -191,64 +202,67 @@ class ThemeServiceProvider with ChangeNotifier {
     );
   }
 
-  InputDecorationTheme _inputDecorationTheme({required bool isDark}) {
-    final borderColor = isDark ? _darkBorderColor : _lightBorderColor;
-    return InputDecorationTheme(      
+  InputDecorationTheme _inputDecorationTheme() {
+    return InputDecorationTheme(
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: borderColor, // Border color when the field is enabled
+          color: _darkBorderColor,
+          width: 1.5,
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: _primaryColor, // Border color when the field is focused
+          color: _secondaryColor,
         ),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: _errorColor, // Border color when validation fails
+          color: _errorColor,
+          width: 1.5,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: _errorColor, // Border color when focused but has an error
+          color: _errorColor,
+          width: 1.5,
         ),
       ),
       contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       disabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: borderColor.withValues(alpha: 0.5), // Disabled border color
+          color: _darkBorderColor.withValues(alpha: 0.2),
+          width: 0.5,
         ),
       ),
       filled: true,
-      fillColor: isDark ? _darkSurfaceColor : _lightSurfaceColor,
-      hintStyle: formHint(isDark ? _onSurfaceColorDark : _onSurfaceColor),
+      fillColor: _fourthColor,
+      hintStyle: formHint(_onSurfaceColorDark.withValues(alpha: 0.55)),
       floatingLabelBehavior: FloatingLabelBehavior.never,
     );
   }
 
   AppBarTheme _appBarTheme() {
     return AppBarTheme(
-      foregroundColor: isDark ? _lightBackgroundColor : _darkBackgroundColor,
+      foregroundColor: isDark ? _onSurfaceColorDark : _onSurfaceColor,
       backgroundColor: isDark ? _darkSurfaceColor : _lightSurfaceColor,
       elevation: 0,
       iconTheme: IconThemeData(
-        color: isDark ? _lightBackgroundColor : _darkBackgroundColor,
+        color: isDark ? _onSurfaceColorDark : _onSurfaceColor,
       ),
       titleTextStyle: navBarTitle(
-        isDark ? _lightBackgroundColor : _darkBackgroundColor,
+        isDark ? _onSurfaceColorDark : _onSurfaceColor,
       ),
     );
   }
 
   IconThemeData _iconThemeData({required bool isDark}) {
     return IconThemeData(
-      color: isDark ? _lightBackgroundColor : _darkBackgroundColor,
+      color: isDark ? _onSurfaceColorDark : _onSurfaceColor,
     );
   }
 
@@ -257,11 +271,11 @@ class ThemeServiceProvider with ChangeNotifier {
       backgroundColor: isDark ? _darkSurfaceColor : _lightSurfaceColor,
       type: BottomNavigationBarType.fixed,
       elevation: 16,
-      selectedItemColor: _primaryColor,
-      unselectedItemColor: isDark ? _lightBackgroundColor : _darkBackgroundColor,
+      selectedItemColor: _secondaryColor,
+      unselectedItemColor: const Color(0xFF666666),
       showUnselectedLabels: true,
-      selectedLabelStyle: tabSelected(_isDark ? _lightBackgroundColor : _darkBackgroundColor),
-      unselectedLabelStyle: tabUnselected(_isDark ? _lightBackgroundColor : _darkBackgroundColor),
+      selectedLabelStyle: tabSelected(_secondaryColor),
+      unselectedLabelStyle: tabUnselected(const Color(0xFF666666)),
     );
   }
 

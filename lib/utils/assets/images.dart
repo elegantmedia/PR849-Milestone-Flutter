@@ -11,5 +11,7 @@
 class AppImages {
   AppImages._();
 
-  // Example: static const String logo = 'assets/images/logo.png';
+  static const String logo = 'assets/logo/app_logo.svg';
+  static const String introBackground = 'assets/svg/intro_image.svg';
+  static const String emptyState = 'assets/svg/empty_state.svg';
 }

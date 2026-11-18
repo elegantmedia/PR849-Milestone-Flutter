@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /// Defines standardized font sizes used throughout the application.
 /// 
@@ -14,6 +13,12 @@ import 'package:google_fonts/google_fonts.dart';
 /// )
 /// ```
 enum FontSize {
+  /// Extra extra extra extra large - 34px.
+  xxxxl,
+
+  /// Extra extra extra large - 32px.
+  xxxl,
+
   /// Extra extra large - 22px (typically for page titles)
   xxl,
   
@@ -41,6 +46,10 @@ extension FontSizeExtension on FontSize {
   /// Returns the numeric font size in logical pixels.
   double get size {
     switch (this) {
+      case FontSize.xxxxl:
+        return 34;
+      case FontSize.xxxl:
+        return 32;
       case FontSize.xxl:
         return 22;
       case FontSize.xl:
@@ -88,7 +97,7 @@ TextStyle platypi({
   double? height,
   TextDecoration? decoration,
 }) =>
-    GoogleFonts.platypi(
+    TextStyle(
       color: color,
       fontSize: fontSize.size,
       fontWeight: weight,
@@ -127,7 +136,7 @@ TextStyle notoSans({
   double? height,
   TextDecoration? decoration,
 }) =>
-    GoogleFonts.notoSans(
+    TextStyle(
       color: color,
       fontSize: fontSize.size,
       fontWeight: weight,
@@ -205,7 +214,7 @@ TextStyle tabUnselected(Color color) => platypi(color: color, fontSize: FontSize
 /// Widget build(BuildContext context) {
 ///   return Text(
 ///     'Welcome',
-///     style: context.headline1(color: context.colorScheme.primary),
+///     style: context.(color: context.colorScheme.primary),
 ///   );
 /// }
 /// ```
@@ -255,17 +264,17 @@ extension TextStyleExtension on BuildContext {
         height: height,
       );
 
-  /// Headline 1 - Largest heading (22px, bold, Platypi).
+  /// Headline 1 - Largest heading (34px, bold, Platypi).
   /// 
   /// Used for page titles and primary headings.
   /// 
   /// Example:
   /// ```dart
-  /// Text('Dashboard', style: context.headline1())
+  /// Text('Dashboard', style: context.())
   /// ```
   TextStyle headline1({Color? color, double? letterSpacing, double? height, FontWeight? weight}) => platypi(
         color: color ?? _defaultColor,
-        fontSize: FontSize.xxl,
+        fontSize: FontSize.xxxxl,
         weight: weight ?? FontWeight.w700,
         letterSpacing: letterSpacing ?? 0.0,
         height: height,
@@ -283,6 +292,12 @@ extension TextStyleExtension on BuildContext {
         weight: weight ?? FontWeight.w700,
         letterSpacing: letterSpacing ?? 0.0,
         height: height,
+      );
+  TextStyle headlineTitle({Color? color, double? letterSpacing, FontWeight? weight}) => platypi(
+        color: color ?? _defaultColor,
+        fontSize: FontSize.xxl,
+        weight: weight ?? FontWeight.w700,
+        letterSpacing: letterSpacing ?? 0.0,
       );
 
   /// Headline 3 - Sub-section heading (16px, semi-bold, Platypi).

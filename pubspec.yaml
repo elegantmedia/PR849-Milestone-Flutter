@@ -52,8 +52,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  # fonts:
+  #   - family: Jost
+  #     fonts:
+  #       - asset: assets/fonts/Jost-Regular.ttf
+  #         weight: 400
+  #       - asset: assets/fonts/Jost-Bold.ttf
+  #         weight: 700
   assets:
     - env/.env.development
+    - assets/logo/
+    - assets/svg/
     # - env/.env.production
     # - env/.env.staging
 

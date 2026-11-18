@@ -4,7 +4,7 @@ import 'package:milestone/profile/profile.dart';
 import '../helpers/test_data.dart';
 
 /// Example test for model serialization/deserialization.
-/// 
+///
 /// This demonstrates how to test your data models to ensure
 /// JSON parsing and serialization work correctly.
 void main() {
@@ -20,6 +20,7 @@ void main() {
       expect(profile.uuid, testUuid);
       expect(profile.firstName, 'John');
       expect(profile.lastName, 'Doe');
+      expect(profile.imageUrl, '');
       expect(profile.isEmailVerified, true);
       expect(profile.isProfileCompleted, true);
     });
@@ -35,6 +36,7 @@ void main() {
       expect(json['uuid'], testUuid);
       expect(json['firstName'], 'John');
       expect(json['lastName'], 'Doe');
+      expect(json['imageUrl'], '');
       expect(json['is_email_verified'], true);
       expect(json['is_profile_completed'], true);
     });
@@ -56,6 +58,7 @@ void main() {
       expect(profile.uuid, testUuid);
       expect(profile.firstName, '');
       expect(profile.lastName, '');
+      expect(profile.imageUrl, '');
       expect(profile.isEmailVerified, false);
       expect(profile.isProfileCompleted, false);
     });
@@ -69,6 +72,16 @@ void main() {
 
       // Assert
       expect(fullName, 'John Doe');
+    });
+
+    test('should parse and serialize image URL', () {
+      final profile = UserProfile.fromJson({
+        ...mockUserProfileJson,
+        'imageUrl': 'https://example.com/avatar.png',
+      });
+
+      expect(profile.imageUrl, 'https://example.com/avatar.png');
+      expect(profile.toJson()['imageUrl'], 'https://example.com/avatar.png');
     });
   });
 

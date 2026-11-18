@@ -285,7 +285,7 @@ class _PasswordFormFieldState extends State<_PasswordFormField> {
           suffixIcon: IconButton(
             icon: Icon(
               _isVisible ? Icons.visibility : Icons.visibility_off,
-              color: colorScheme.primary,
+              color: colorScheme.secondary,
             ),
             onPressed: _toggleVisibility,
           ),

@@ -38,21 +38,21 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   /// Shows an adaptive dialog with an error message if the authentication fails.
   /// The error message is obtained from the [AuthState] object.
   /// The dialog is dismissed when the user taps the 'OK' button.
-  Future<void> onAuthStateChanged(AuthState state) async {
-    if (state is AuthForgotPasswordSubmitFailed && mounted) {
-      await CommonDialog.alert(
-        context,
-        title: context.l10n.requestFailed,
-        message: state.message,
-      );
-    } else if (state is AuthForgotPasswordSubmitSuccess) {
-      if (mounted) {
-        setState(() {
-          _isSubmitted = true;
-        });
-      }
-    }
-  }
+   Future<void> onAuthStateChanged(AuthState state) async {
+  //   if (state is AuthForgotPasswordSubmitFailed && mounted) {
+  //     await CommonDialog.alert(
+  //       context,
+  //       title: context.l10n.requestFailed,
+  //       message: state.message,
+  //     );
+  //   } else if (state is AuthForgotPasswordSubmitSuccess) {
+  //     if (mounted) {
+  //       setState(() {
+  //         _isSubmitted = true;
+  //       });
+  //     }
+  //   }
+   }
 
   @override
   void dispose() {
@@ -69,8 +69,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         return AbsorbPointer(
           absorbing: snapshot.data is AuthLoading,
           child: Scaffold(
-            appBar: AppBar(
-              title: Text(context.l10n.forgotPassword),
+            appBar: CommonAppBar(
+              title: context.l10n.forgotPassword,
+              showBackButton: true,
             ),
             body: Builder(
               builder: (context) {
@@ -88,7 +89,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       Text(
                         context.l10n.passwordResetSent,
                         textAlign: TextAlign.center,
-                        style: context.bodyLarge().medium,
+                        style: context.headline2().medium,
                       ),
                       Gaps.gapXxl48,
                       Row(
@@ -96,7 +97,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         children: [
                           Text(
                             context.l10n.didntReceiveEmail,
-                            style: context.bodyDefault(),
+                            style: context.bodyLarge().medium,
                           ),
                           CommonButton.text(
                             onPressed: () {
@@ -117,32 +118,33 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     key: _formKey,
                     child: ExtendedColumn(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-                          child: AppLogo(aspectRatio: 16 / 9),
-                        ),
+                      
+                        const RelativeGap(mainAxisExtent: 0.05),
                         Text(
                           context.l10n.enterEmailReset,
+                          textAlign: TextAlign.center,
                           style: context.bodyLarge(),
                         ),
-                        Gaps.gapMd16,
+                        Gaps.gapXl40,
                         AuthFormFields.email(
                           controller: _emailController,
                           title: context.l10n.email,
                           autofillHints: const [AutofillHints.email],
                         ),
-                        Gaps.gapLg24,
+                        
+                        const Spacer(),
                         CommonButton.primary(
                           isLoading: snapshot.data is AuthLoading,
                           label: context.l10n.submit,
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
+                              _isSubmitted = true;
                               FocusScope.of(context).unfocus();
                               unawaited(authService.forgotPassword(_emailController.text));
                             }
                           },
                         ),
-                        const RelativeGap(mainAxisExtent: 0.02),
+                        const RelativeGap(mainAxisExtent: 0.05),
                       ],
                     ),
                   ),

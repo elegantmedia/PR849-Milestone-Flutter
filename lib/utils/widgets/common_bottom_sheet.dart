@@ -131,10 +131,10 @@ class _BottomSheetContent extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                title!,
-                // style: context.h1().bold,
-                style: context.headline1(),
-              ),
+              title!,
+              // style: context.h1().bold,
+              style: context.headline1(),
+            ),
             ),
           ],
           Gaps.gapMd16,

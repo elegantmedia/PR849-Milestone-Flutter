@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:milestone/app/controller/app_text_styles.dart';
 import 'package:milestone/utils/utils.dart';
 
 /// Defines the size variants for the buttons.
@@ -173,7 +174,8 @@ class _PrimaryButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
-        textStyle: textStyle,
+        //textStyle: textStyle?.copyWith(fontWeight: FontWeight.w700),
+         textStyle: context.bodyDefault().bold,
       ).copyWith(
         minimumSize: (minimumSize != null || size == CommonButtonSize.small) ? WidgetStatePropertyAll(minimumSize ?? Size(_smallWidth, 48)) : null,
       ),
@@ -238,7 +240,7 @@ class _OutlineButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
-        textStyle: textStyle,
+        textStyle: textStyle?.copyWith(fontWeight: FontWeight.w700),
       ).copyWith(
         minimumSize: (minimumSize != null || size == CommonButtonSize.small) ? WidgetStatePropertyAll(minimumSize ?? Size(_smallWidth, 48)) : null,
       ),
@@ -301,7 +303,7 @@ class _GhostButton extends StatelessWidget {
       style: TextButton.styleFrom(
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
-        textStyle: textStyle,
+        textStyle: textStyle?.copyWith(fontWeight: FontWeight.w700),
       ).copyWith(
         minimumSize: (minimumSize != null || size == CommonButtonSize.small) ? WidgetStatePropertyAll(minimumSize ?? Size(220.w, 48)) : null,
       ),

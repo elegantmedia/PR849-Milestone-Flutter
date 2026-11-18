@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:milestone/auth/auth.dart';
 import 'package:milestone/more/more.dart';
+import 'package:mocktail/mocktail.dart';
 
 /// Mock class for AuthService
 class MockAuthService extends Mock implements AuthService {}

@@ -1,0 +1,46 @@
+name: Flutter CI
+
+on:
+  pull_request:
+    branches: [main, development]
+  push:
+    branches: [main, development]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flutter-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze-and-test:
+    name: Analyze and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.47.8'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Prepare non-secret test environment asset
+        run: |
+          mkdir -p env
+          printf 'BASE_URL=https://example.invalid\nAPI_KEY=ci-placeholder\nSESSION_KEY=ci-placeholder\n' > env/.env.development
+
+      - name: Analyze Dart code
+        run: flutter analyze --no-pub --no-fatal-infos
+
+      - name: Run unit and widget tests
+        run: flutter test --no-pub

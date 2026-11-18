@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:milestone/l10n/gen/app_localizations.dart';
+import 'package:milestone/utils/l10n/gen/app_localizations.dart';
 
 /// A helper function to pump a widget with Material app, theme, and localization support.
 /// 

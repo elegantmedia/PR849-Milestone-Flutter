@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:milestone/profile/profile.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../helpers/test_data.dart';
 

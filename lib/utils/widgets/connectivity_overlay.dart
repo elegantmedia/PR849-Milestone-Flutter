@@ -66,7 +66,6 @@ class _ConnectivityOverlayState extends State<ConnectivityOverlay> with TickerPr
         return Stack(
           children: [
             widget.child,
-
             Positioned(
               left: 16.w,
               right: 16.w,
@@ -87,40 +86,40 @@ class _ConnectivityOverlayState extends State<ConnectivityOverlay> with TickerPr
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                         child: Row(
-                          children: [
-                            FaIcon(
-                              FontAwesomeIcons.wifi,
-                              size: 16.sp,
-                              color: Theme.of(context).colorScheme.onErrorContainer,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.wifi,
+                            size: 16.sp,
+                            color: Theme.of(context).colorScheme.onErrorContainer,
+                          ),
+                          Gaps.gapSm8,
+                          Expanded(
+                            child: Text(
+                              context.l10n.noInternetConnection,
+                              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                    color: Theme.of(context).colorScheme.onErrorContainer,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
-                            Gaps.gapSm8,
-                            Expanded(
-                              child: Text(
-                                context.l10n.noInternetConnection,
-                                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                      color: Theme.of(context).colorScheme.onErrorContainer,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                          ),
+                          TextButton(
+                            onPressed: _settings.openSettings,
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.symmetric(horizontal: 8.w),
+                              minimumSize: Size.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: Text(
+                              context.l10n.goToSettings,
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onErrorContainer,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14.sp,
                               ),
                             ),
-                            TextButton(
-                              onPressed: _settings.openSettings,
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.symmetric(horizontal: 8.w),
-                                minimumSize: Size.zero,
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              ),
-                              child: Text(
-                                context.l10n.goToSettings,
-                                style: TextStyle(
-                                  color: Theme.of(context).colorScheme.onErrorContainer,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
                       ),
                     ),
                   );

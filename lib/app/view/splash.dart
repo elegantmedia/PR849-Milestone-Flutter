@@ -182,14 +182,14 @@ class _SplashPageState extends State<SplashPage> {
                             return Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                               child: Text(
-                                state.lastError ?? '',
-                                textAlign: TextAlign.center,
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                                style: context.bodySmall(
-                                  color: context.colorScheme.onSurface.withValues(alpha: 0.5),
-                                ),
+                              state.lastError ?? '',
+                              textAlign: TextAlign.center,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                              style: context.bodySmall(
+                                color: context.colorScheme.onSurface.withValues(alpha: 0.5),
                               ),
+                            ),
                             );
                           },
                         ),

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 import 'package:milestone/app/app.dart';
 import 'package:milestone/auth/auth.dart';
 import 'package:milestone/utils/utils.dart';
+import 'package:pinput/pinput.dart';
 
 class CodeVerificationPage extends StatefulWidget {
   const CodeVerificationPage({super.key});
@@ -59,41 +59,38 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
-      width: 50,
-      height: 50,
+      width: 55,
+      height: 55,
       textStyle: context.headline1(color: context.colorScheme.onSurface),
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: context.themeColors.darkBorderColor),
       ),
     );
     final focusedPinTheme = defaultPinTheme.copyWith(
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: context.colorScheme.secondary),
       ),
     );
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: BoxDecoration(
         color: context.colorScheme.primary.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: context.colorScheme.primary, width: 2),
+        border: Border.all(color: context.colorScheme.primary),
       ),
     );
-    final followingPinTheme = defaultPinTheme.copyWith(
-      decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: BorderRadius.circular(8),
-      ),
-    );
+    final followingPinTheme = defaultPinTheme;
     return StreamBuilder<AuthState>(
       stream: _authService.onAuthStateChanges,
       builder: (context, snapshot) {
         return AbsorbPointer(
           absorbing: snapshot.data is AuthLoading,
           child: Scaffold(
-            appBar: AppBar(
-              title: Text(context.l10n.verification),
+            appBar: CommonAppBar(
+              title: context.l10n.verification,
               actions: [
                 CommonButton.text(
                   onPressed: () async {
@@ -117,9 +114,16 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                 Text(
                   context.l10n.verificationCodeSent,
                   textAlign: TextAlign.center,
-                  style: context.bodyDefault(),
+                  style: context.bodyLarge(),
+                ),
+                // add email here
+                Text(
+                  'sample@mail.com',
+                  textAlign: TextAlign.center,
+                  style: context.bodyLarge(),
                 ),
                 Gaps.gapXxl48,
+                
                 SizedBox(
                   width: double.infinity,
                   child: Pinput(
@@ -131,9 +135,9 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                     followingPinTheme: followingPinTheme,                   
                   ),
                 ),
-                Gaps.gapXxl48,
+                //Gaps.gapXxl48,
+                const Spacer(),
                 CommonButton.primary(
-                  size: CommonButtonSize.small,
                   isLoading: snapshot.data is AuthLoading,
                   label: context.l10n.verify,
                   onPressed: () async {
@@ -141,34 +145,18 @@ class _CodeVerificationPageState extends State<CodeVerificationPage> {
                   },
                 ),
                 Gaps.gapMd16,
-                const Spacer(),
+                //const Spacer(),
                 Text(
                   context.l10n.didntReceiveCode,
                   textAlign: TextAlign.center,
-                  style: context.bodyDefault(),
+                  style: context.bodyLarge(),
                 ),
                 Gaps.gapXs4,
                 CommonButton.text(
                   onPressed: _authService.resendVerificationCode,
                   label: context.l10n.resendCode,
                 ),
-                Gaps.gapMd16,
-                Text(
-                  context.l10n.or,
-                  textAlign: TextAlign.center,
-                  style: context.bodyDefault(),
-                ),
-                Gaps.gapMd16,
-                Text(
-                  context.l10n.sendCodeMobile,
-                  textAlign: TextAlign.center,
-                  style: context.bodyDefault(),
-                ),
-                Gaps.gapXs4,
-                CommonButton.text(
-                  onPressed: () {},
-                  label: context.l10n.sendCode,
-                ),
+                
                 const RelativeGap(mainAxisExtent: 0.02),
               ],
             ),

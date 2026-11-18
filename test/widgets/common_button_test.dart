@@ -10,6 +10,37 @@ import '../helpers/pump_app.dart';
 /// they render correctly and handle user interactions.
 void main() {
   group('CommonButton.primary', () {
+    testWidgets('blocks presses while loading and allows them after loading ends', (tester) async {
+      var presses = 0;
+      var isLoading = true;
+      late StateSetter updateLoading;
+      await tester.pumpApp(
+        StatefulBuilder(
+          builder: (context, setState) {
+            updateLoading = setState;
+            return CommonButton.primary(
+              label: 'Submit',
+              isLoading: isLoading,
+              onPressed: () => presses++,
+            );
+          },
+        ),
+      );
+
+      expect(find.byType(CommonCircularLoader), findsOneWidget);
+      await tester.tap(find.byType(ElevatedButton), warnIfMissed: false);
+      await tester.pump();
+      expect(presses, 0);
+
+      updateLoading(() => isLoading = false);
+      await tester.pumpAndSettle();
+      expect(find.byType(CommonCircularLoader), findsNothing);
+      expect(find.text('Submit'), findsOneWidget);
+      await tester.tap(find.text('Submit'));
+      await tester.pump();
+      expect(presses, 1);
+    });
+
     testWidgets('should render with label text', (tester) async {
       // Arrange & Act - Pump the widget
       await tester.pumpApp(

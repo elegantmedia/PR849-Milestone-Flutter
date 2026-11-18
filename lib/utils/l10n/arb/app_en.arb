@@ -1,0 +1,923 @@
+{
+    "@@locale": "en",
+    "appName": "Starter",
+    "@appName": {
+        "description": "The name of the application"
+    },
+    "noInternetTitle": "Whoops!!",
+    "@noInternetTitle": {
+        "description": "Title for the no internet overlay"
+    },
+    "noInternetSubMessage": "Please check your internet connection and try again.",
+    "@noInternetSubMessage": {
+        "description": "Sub-message for the no internet overlay"
+    },
+    "goToSettings": "Go to settings",
+    "@goToSettings": {
+        "description": "Label for the go to settings button"
+    },
+    "signIn": "Sign In",
+    "@signIn": {
+        "description": "Label for sign in button or title"
+    },
+    "signUp": "Sign Up",
+    "@signUp": {
+        "description": "Label for sign up button or title"
+    },
+    "logIn": "Log In",
+    "@logIn": {
+        "description": "Label for the intro page log in button"
+    },
+    "introWelcome": "Welcome to Rehabwise",
+    "@introWelcome": {
+        "description": "Welcome text on the intro page"
+    },
+    "introHeadline": "Every session is a milestone",
+    "@introHeadline": {
+        "description": "Main headline on the intro page"
+    },
+    "introDescription": "Years of Rehab expertise, all in one powerful app, guided phase by phase.",
+    "@introDescription": {
+        "description": "Supporting description on the intro page"
+    },
+    "email": "Email",
+    "@email": {
+        "description": "Label for email input"
+    },
+    "password": "Password",
+    "@password": {
+        "description": "Label for password input"
+    },
+    "forgotPassword": "Forgot Password?",
+    "@forgotPassword": {
+        "description": "Text for forgot password link"
+    },
+    "alreadyHaveAccount": "Already have an account?",
+    "@alreadyHaveAccount": {
+        "description": "Prompt for users who already have an account"
+    },
+    "dontHaveAccount": "Don't have an account?",
+    "@dontHaveAccount": {
+        "description": "Prompt for users who don't have an account"
+    },
+    "firstName": "First Name",
+    "@firstName": {
+        "description": "Label for first name input"
+    },
+    "firstNameRequired": "Please enter your first name",
+    "@firstNameRequired": {
+        "description": "Validation error when the first name is empty"
+    },
+    "lastName": "Last Name",
+    "@lastName": {
+        "description": "Label for last name input"
+    },
+    "lastNameRequired": "Please enter your last name",
+    "@lastNameRequired": {
+        "description": "Validation error when the last name is empty"
+    },
+    "notProvided": "Not provided",
+    "@notProvided": {
+        "description": "Fallback label for a profile detail value that is missing"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Title for home page"
+    },
+    "homeWelcomeBack": "Welcome back",
+    "@homeWelcomeBack": {
+        "description": "Welcome message on the home page"
+    },
+    "homeGreeting": "Hello, Sarah!",
+    "@homeGreeting": {
+        "description": "Greeting shown below the welcome message on the home page"
+    },
+    "homeRecoveryJourney": "Your recovery journey continues.",
+    "@homeRecoveryJourney": {
+        "description": "Supporting text below the home page greeting"
+    },
+    "homeResumeProgress": "Pick up where you left off",
+    "@homeResumeProgress": {
+        "description": "Title for the recovery progress card"
+    },
+    "homeNoActivePrograms": "No Active Programs",
+    "@homeNoActivePrograms": {
+        "description": "Empty-state title shown when there is no active rehabilitation program"
+    },
+    "homeStartProgramPrompt": "Start a rehabilitation program to begin tracking your progress",
+    "@homeStartProgramPrompt": {
+        "description": "Empty-state message shown when there is no active rehabilitation program"
+    },
+    "homeInjuryName": "Hamstring Strain Grade 3",
+    "@homeInjuryName": {
+        "description": "Injury name shown in the recovery progress card"
+    },
+    "homeProgressCompleted": "40% Completed",
+    "@homeProgressCompleted": {
+        "description": "Progress completion label shown in the recovery progress card"
+    },
+    "homePhase": "Phase 2 - Strength",
+    "@homePhase": {
+        "description": "Current rehabilitation phase shown in the recovery progress card"
+    },
+    "homeNextSession": "Next Session",
+    "@homeNextSession": {
+        "description": "Label for the next-session button"
+    },
+    "homeDiagnoseInjury": "Diagnose My Injury",
+    "@homeDiagnoseInjury": {
+        "description": "Label for the diagnose injury action card"
+    },
+    "homeAllPrograms": "All Programs",
+    "@homeAllPrograms": {
+        "description": "Label for the all programs action card"
+    },
+    "homeChatExperts": "Chat With Experts",
+    "@homeChatExperts": {
+        "description": "Label for the chat with experts action card"
+    },
+    "diagnoseStepProgress": "{current} / {total}",
+    "@diagnoseStepProgress": {
+        "description": "Current step and total step count in the injury diagnosis flow",
+        "placeholders": {
+            "current": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "diagnosePainRatingTitle": "First Steps Pain Rating",
+    "@diagnosePainRatingTitle": {
+        "description": "Title of the first diagnosis question"
+    },
+    "diagnosePainRatingDescription": "Rate your pain level during your first steps in the morning or after a period of rest.",
+    "@diagnosePainRatingDescription": {
+        "description": "Description of the first diagnosis question"
+    },
+    "diagnoseSafetyScreen": "Safety Screen",
+    "@diagnoseSafetyScreen": {
+        "description": "Heading for the injury safety checklist"
+    },
+    "diagnoseSafetyWeightLoss": "Unexplained weight loss alongside this pain",
+    "@diagnoseSafetyWeightLoss": {
+        "description": "Safety checklist item about unexplained weight loss"
+    },
+    "diagnoseSafetyFever": "Fever, chills, or feeling generally unwell around the time of injury",
+    "@diagnoseSafetyFever": {
+        "description": "Safety checklist item about fever or feeling unwell"
+    },
+    "diagnoseSafetyNumbness": "Numbness, tingling, or weakness that is spreading or getting worse",
+    "@diagnoseSafetyNumbness": {
+        "description": "Safety checklist item about worsening numbness or weakness"
+    },
+    "diagnoseSafetyBladderBowel": "Any change in bladder or bowel control since the injury",
+    "@diagnoseSafetyBladderBowel": {
+        "description": "Safety checklist item about bladder or bowel control changes"
+    },
+    "diagnoseSafetyChestPain": "Chest pain or shortness of breath connected to this injury",
+    "@diagnoseSafetyChestPain": {
+        "description": "Safety checklist item about chest pain or shortness of breath"
+    },
+    "diagnoseSafetyDeformity": "Visible deformity, or a joint that looks obviously out of place",
+    "@diagnoseSafetyDeformity": {
+        "description": "Safety checklist item about visible deformity"
+    },
+    "diagnoseSafetyWeightBearing": "Complete inability to bear any weight on the injured area",
+    "@diagnoseSafetyWeightBearing": {
+        "description": "Safety checklist item about inability to bear weight"
+    },
+    "diagnoseSafetyNightPain": "Night pain that is severe and does not ease with rest or position change",
+    "@diagnoseSafetyNightPain": {
+        "description": "Safety checklist item about severe night pain"
+    },
+    "diagnoseSafetyCancer": "A personal history of cancer",
+    "@diagnoseSafetyCancer": {
+        "description": "Safety checklist item about a history of cancer"
+    },
+    "diagnoseSafetyHighForce": "This followed a high-force event (e.g. car accident, fall from height)",
+    "@diagnoseSafetyHighForce": {
+        "description": "Safety checklist item about a high-force injury event"
+    },
+    "diagnoseStepTwoTitle": "Injury Identification",
+    "@diagnoseStepTwoTitle": {
+        "description": "Title of the second diagnosis step"
+    },
+    "diagnoseStepTwoDescription": "Where is the problem, as specifically as you can describe it.",
+    "@diagnoseStepTwoDescription": {
+        "description": "Description of the second diagnosis step"
+    },
+    "diagnoseBodyRegionLabel": "Body Region",
+    "@diagnoseBodyRegionLabel": {
+        "description": "Label for the body region dropdown"
+    },
+    "diagnoseSelectRegion": "Select a region",
+    "@diagnoseSelectRegion": {
+        "description": "Hint for the body region dropdown"
+    },
+    "diagnoseRegionHead": "Head",
+    "@diagnoseRegionHead": { "description": "Head body region option" },
+    "diagnoseRegionNeck": "Neck",
+    "@diagnoseRegionNeck": { "description": "Neck body region option" },
+    "diagnoseRegionShoulder": "Shoulder",
+    "@diagnoseRegionShoulder": { "description": "Shoulder body region option" },
+    "diagnoseRegionUpperArm": "Upper arm",
+    "@diagnoseRegionUpperArm": { "description": "Upper arm body region option" },
+    "diagnoseRegionElbow": "Elbow",
+    "@diagnoseRegionElbow": { "description": "Elbow body region option" },
+    "diagnoseRegionForearm": "Forearm",
+    "@diagnoseRegionForearm": { "description": "Forearm body region option" },
+    "diagnoseRegionWrist": "Wrist",
+    "@diagnoseRegionWrist": { "description": "Wrist body region option" },
+    "diagnoseRegionHand": "Hand",
+    "@diagnoseRegionHand": { "description": "Hand body region option" },
+    "diagnoseRegionChest": "Chest",
+    "@diagnoseRegionChest": { "description": "Chest body region option" },
+    "diagnoseRegionUpperBack": "Upper back",
+    "@diagnoseRegionUpperBack": { "description": "Upper back body region option" },
+    "diagnoseRegionLowerBack": "Lower back",
+    "@diagnoseRegionLowerBack": { "description": "Lower back body region option" },
+    "diagnoseRegionHip": "Hip",
+    "@diagnoseRegionHip": { "description": "Hip body region option" },
+    "diagnoseRegionThigh": "Thigh",
+    "@diagnoseRegionThigh": { "description": "Thigh body region option" },
+    "diagnoseRegionKnee": "Knee",
+    "@diagnoseRegionKnee": { "description": "Knee body region option" },
+    "diagnoseRegionLowerLeg": "Lower leg",
+    "@diagnoseRegionLowerLeg": { "description": "Lower leg body region option" },
+    "diagnoseRegionAnkle": "Ankle",
+    "@diagnoseRegionAnkle": { "description": "Ankle body region option" },
+    "diagnoseRegionFoot": "Foot",
+    "@diagnoseRegionFoot": { "description": "Foot body region option" },
+    "diagnoseSideLabel": "Side",
+    "@diagnoseSideLabel": { "description": "Label for the side radio group" },
+    "diagnoseSideLeft": "Left",
+    "@diagnoseSideLeft": { "description": "Left side option" },
+    "diagnoseSideRight": "Right",
+    "@diagnoseSideRight": { "description": "Right side option" },
+    "diagnoseSideBoth": "Both Sides",
+    "@diagnoseSideBoth": { "description": "Both sides option" },
+    "diagnoseSideNotApplicable": "Not Applicable",
+    "@diagnoseSideNotApplicable": { "description": "Not applicable side option" },
+    "diagnoseSpecificLocationLabel": "Describe the specific location",
+    "@diagnoseSpecificLocationLabel": { "description": "Label for the injury location field" },
+    "diagnoseSpecificLocationDescription": "E.g. “outside of the knee, just below the joint line” or “front of shoulder, worse when reaching overhead”",
+    "@diagnoseSpecificLocationDescription": { "description": "Help text for the injury location field" },
+    "diagnoseSpecificLocationHint": "type here",
+    "@diagnoseSpecificLocationHint": { "description": "Hint for the injury location field" },
+    "diagnoseMainSportLabel": "Main sport or activity",
+    "@diagnoseMainSportLabel": { "description": "Label for the main sport or activity field" },
+    "diagnoseMainSportDescription": "What do you do most regularly - this shapes what “recovery” needs to mean for you.",
+    "@diagnoseMainSportDescription": { "description": "Help text for the main sport or activity field" },
+    "diagnoseMainSportHint": "e.g. Running, weightlifting, netball, no regular sport.",
+    "@diagnoseMainSportHint": { "description": "Hint for the main sport or activity field" },
+    "diagnosePhysicalDemandsLabel": "Physical Demands",
+    "@diagnosePhysicalDemandsLabel": { "description": "Label for the physical demands radio group" },
+    "diagnoseDemandSedentary": "Sedentary / Desk-based",
+    "@diagnoseDemandSedentary": { "description": "Sedentary physical demand option" },
+    "diagnoseDemandRehabilitation": "Plantar Fascia Tear Rehabilitation",
+    "@diagnoseDemandRehabilitation": { "description": "Rehabilitation physical demand option" },
+    "diagnoseDemandLightDaily": "Light daily activities",
+    "@diagnoseDemandLightDaily": { "description": "Light daily activities physical demand option" },
+    "diagnoseDemandRecreational": "Recreational sport",
+    "@diagnoseDemandRecreational": { "description": "Recreational sport physical demand option" },
+    "diagnoseDemandCompetitive": "Competitive / high-level sport",
+    "@diagnoseDemandCompetitive": { "description": "Competitive sport physical demand option" },
+    "diagnoseDemandManual": "Manual / physically demanding job",
+    "@diagnoseDemandManual": { "description": "Manual work physical demand option" },
+    "diagnoseTrainingFrequencyLabel": "How often do you currently train or play?",
+    "@diagnoseTrainingFrequencyLabel": { "description": "Label for the training frequency dropdown" },
+    "diagnoseSelect": "Select",
+    "@diagnoseSelect": { "description": "Generic select dropdown hint" },
+    "diagnoseFrequencyNone": "I do not currently train or play",
+    "@diagnoseFrequencyNone": { "description": "No training frequency option" },
+    "diagnoseFrequencyOneToTwo": "1-2 times per week",
+    "@diagnoseFrequencyOneToTwo": { "description": "One to two training sessions per week option" },
+    "diagnoseFrequencyThreeToFour": "3-4 times per week",
+    "@diagnoseFrequencyThreeToFour": { "description": "Three to four training sessions per week option" },
+    "diagnoseFrequencyFiveOrMore": "5 or more times per week",
+    "@diagnoseFrequencyFiveOrMore": { "description": "Five or more training sessions per week option" },
+    "diagnoseStepThreeTitle": "Onset & Mechanism",
+    "@diagnoseStepThreeTitle": { "description": "Title of diagnosis step three" },
+    "diagnoseOnsetQuestion": "Did this come on suddenly from a specific moment, or gradually over time?",
+    "@diagnoseOnsetQuestion": { "description": "Question about how the symptoms started" },
+    "diagnoseOnsetSudden": "Sudden / traumatic",
+    "@diagnoseOnsetSudden": { "description": "Sudden onset option" },
+    "diagnoseOnsetSuddenDescription": "A specific fall, twist, lift, or impact you can point to",
+    "@diagnoseOnsetSuddenDescription": { "description": "Description of sudden onset" },
+    "diagnoseOnsetGradual": "Gradual / insidious",
+    "@diagnoseOnsetGradual": { "description": "Gradual onset option" },
+    "diagnoseOnsetGradualDescription": "Crept in over days or weeks, no single moment",
+    "@diagnoseOnsetGradualDescription": { "description": "Description of gradual onset" },
+    "diagnoseOnsetUnsure": "Not sure / mixed",
+    "@diagnoseOnsetUnsure": { "description": "Uncertain or mixed onset option" },
+    "diagnoseDateOfInjury": "Date of injury",
+    "@diagnoseDateOfInjury": { "description": "Label for the date of injury field" },
+    "diagnoseDateHint": "DD/MM/YYYY",
+    "@diagnoseDateHint": { "description": "Date format hint" },
+    "diagnoseHowHappened": "How did it happen?",
+    "@diagnoseHowHappened": { "description": "Label for the injury mechanism dropdown" },
+    "diagnoseMechanismSport": "During sport or exercise",
+    "@diagnoseMechanismSport": { "description": "Sport or exercise injury mechanism" },
+    "diagnoseMechanismFall": "Fall",
+    "@diagnoseMechanismFall": { "description": "Fall injury mechanism" },
+    "diagnoseMechanismTwist": "Twist or turn",
+    "@diagnoseMechanismTwist": { "description": "Twisting injury mechanism" },
+    "diagnoseMechanismImpact": "Direct impact",
+    "@diagnoseMechanismImpact": { "description": "Direct impact injury mechanism" },
+    "diagnoseMechanismLifting": "Lifting",
+    "@diagnoseMechanismLifting": { "description": "Lifting injury mechanism" },
+    "diagnoseMechanismOveruse": "Gradual overuse",
+    "@diagnoseMechanismOveruse": { "description": "Overuse injury mechanism" },
+    "diagnoseMechanismOther": "Other / not sure",
+    "@diagnoseMechanismOther": { "description": "Other or unknown injury mechanism" },
+    "diagnosePopQuestion": "Did you feel or hear a pop, snap or tear?",
+    "@diagnosePopQuestion": { "description": "Question about popping or tearing sensation" },
+    "diagnoseContinueActivityQuestion": "Were you able to keep moving / continue the activity right after?",
+    "@diagnoseContinueActivityQuestion": { "description": "Question about continuing activity after injury" },
+    "diagnoseSwellingQuestion": "Did it swell within 24 hours?",
+    "@diagnoseSwellingQuestion": { "description": "Question about swelling after injury" },
+    "diagnoseFirstNoticeQuestion": "When did you first notice it?",
+    "@diagnoseFirstNoticeQuestion": { "description": "Question about when symptoms were first noticed" },
+    "diagnoseTimeDays": "days ago",
+    "@diagnoseTimeDays": { "description": "Days time unit option" },
+    "diagnoseTimeWeeks": "weeks ago",
+    "@diagnoseTimeWeeks": { "description": "Weeks time unit option" },
+    "diagnoseTimeMonths": "months ago",
+    "@diagnoseTimeMonths": { "description": "Months time unit option" },
+    "diagnoseRecentActivityQuestion": "Has there been a recent change in your training, workload or activity levels?",
+    "@diagnoseRecentActivityQuestion": { "description": "Question about recent changes in activity" },
+    "diagnoseProgressionQuestion": "How has it progressed?",
+    "@diagnoseProgressionQuestion": { "description": "Question about symptom progression" },
+    "diagnoseProgressionWorse": "Slowly getting worse",
+    "@diagnoseProgressionWorse": { "description": "Worsening symptom progression option" },
+    "diagnoseProgressionComesGoes": "Come and goes",
+    "@diagnoseProgressionComesGoes": { "description": "Intermittent symptom progression option" },
+    "diagnoseProgressionIntermittentConstant": "Was intermittent, now constant",
+    "@diagnoseProgressionIntermittentConstant": { "description": "Intermittent then constant symptom progression option" },
+    "diagnoseProgressionSame": "Stayed about the same",
+    "@diagnoseProgressionSame": { "description": "Unchanged symptom progression option" },
+    "diagnoseSimilarProblemsQuestion": "Have you had similar problems in this same area before?",
+    "@diagnoseSimilarProblemsQuestion": { "description": "Question about previous similar injuries" },
+    "diagnoseEstimatedStage": "Estimated Stage",
+    "@diagnoseEstimatedStage": { "description": "Heading for the estimated injury stage summary" },
+    "diagnoseStageSubacute": "Subacute 1 - 6 weeks",
+    "@diagnoseStageSubacute": { "description": "Estimated subacute injury stage" },
+    "diagnosePainProfile": "Pain Profile",
+    "@diagnosePainProfile": { "description": "Title of diagnosis step four" },
+    "diagnosePainScaleDescription": "Rate your pain on a scale of 0 (no pain) to 10 (worst imaginable pain).",
+    "@diagnosePainScaleDescription": { "description": "Instructions for the pain rating sliders" },
+    "diagnosePainNow": "Pain right now",
+    "@diagnosePainNow": { "description": "Current pain rating label" },
+    "diagnosePainWorst": "Pain at its worst",
+    "@diagnosePainWorst": { "description": "Worst pain rating label" },
+    "diagnosePainAverage": "Average pain",
+    "@diagnosePainAverage": { "description": "Average pain rating label" },
+    "diagnosePainPattern": "Pattern",
+    "@diagnosePainPattern": { "description": "Pain pattern question label" },
+    "diagnosePainConstant": "Constant",
+    "@diagnosePainConstant": { "description": "Constant pain pattern option" },
+    "diagnosePainIntermittent": "Intermittent",
+    "@diagnosePainIntermittent": { "description": "Intermittent pain pattern option" },
+    "diagnoseNightPain": "Night pain",
+    "@diagnoseNightPain": { "description": "Night pain question label" },
+    "diagnoseNightPainNone": "None",
+    "@diagnoseNightPainNone": { "description": "No night pain option" },
+    "diagnoseNightPainMild": "Mild, doesn't wake me",
+    "@diagnoseNightPainMild": { "description": "Mild night pain option" },
+    "diagnoseNightPainWakes": "Wakes me from sleep",
+    "@diagnoseNightPainWakes": { "description": "Sleep-disrupting night pain option" },
+    "diagnosePainSensation": "What does the pain feel like?",
+    "@diagnosePainSensation": { "description": "Pain sensations question label" },
+    "diagnoseSelectAllThatApply": "Select all that apply",
+    "@diagnoseSelectAllThatApply": { "description": "Instruction for a multiple-selection question" },
+    "diagnosePainSharp": "Sharp",
+    "@diagnosePainSharp": { "description": "Sharp pain option" },
+    "diagnosePainAching": "Dull / aching",
+    "@diagnosePainAching": { "description": "Dull or aching pain option" },
+    "diagnosePainBurning": "Burning",
+    "@diagnosePainBurning": { "description": "Burning pain option" },
+    "diagnosePainThrobbing": "Throbbing",
+    "@diagnosePainThrobbing": { "description": "Throbbing pain option" },
+    "diagnosePainStiffness": "Stiffness",
+    "@diagnosePainStiffness": { "description": "Stiffness sensation option" },
+    "diagnosePainNumbness": "Numbness",
+    "@diagnosePainNumbness": { "description": "Numbness sensation option" },
+    "diagnosePainWeakness": "Weakness",
+    "@diagnosePainWeakness": { "description": "Weakness sensation option" },
+    "diagnosePainWorse": "What makes it worse?",
+    "@diagnosePainWorse": { "description": "Pain aggravating factors question" },
+    "diagnosePainBetter": "What makes it better?",
+    "@diagnosePainBetter": { "description": "Pain relieving factors question" },
+    "diagnoseTypeHere": "Type here...",
+    "@diagnoseTypeHere": { "description": "Hint for diagnosis free-text answers" },
+    "diagnosePainSpreading": "Does the pain travel or spread anywhere else?",
+    "@diagnosePainSpreading": { "description": "Question about spreading pain" },
+    "diagnoseFunctionHistory": "Function & History",
+    "@diagnoseFunctionHistory": { "description": "Title of diagnosis step five" },
+    "diagnoseDailyLifeQuestion": "How this is affecting daily life, and what's been tried so far",
+    "@diagnoseDailyLifeQuestion": { "description": "Question about the area of daily life affected by the injury" },
+    "diagnoseDailyLifeWork": "Work",
+    "@diagnoseDailyLifeWork": { "description": "Work daily life impact option" },
+    "diagnoseDailyLifeSport": "Sport / Exercise",
+    "@diagnoseDailyLifeSport": { "description": "Sport or exercise daily life impact option" },
+    "diagnoseDailyLifeSleep": "Sleep",
+    "@diagnoseDailyLifeSleep": { "description": "Sleep daily life impact option" },
+    "diagnoseDailyLifeHousehold": "Household Tasks",
+    "@diagnoseDailyLifeHousehold": { "description": "Household tasks daily life impact option" },
+    "diagnoseDailyLifeDriving": "Driving",
+    "@diagnoseDailyLifeDriving": { "description": "Driving daily life impact option" },
+    "diagnoseGoalQuestion": "What's your goal?\nWhat do you want to be able to do again, and by when if you have a target?",
+    "@diagnoseGoalQuestion": { "description": "Question about the user's recovery goal and target date" },
+    "diagnoseRelevantHint": "Anything relevant to mention",
+    "@diagnoseRelevantHint": { "description": "Placeholder for recovery goals and additional context" },
+    "diagnosePreviousInjuryQuestion": "Have you injured this same area before (a different episode)?",
+    "@diagnosePreviousInjuryQuestion": { "description": "Question about previous injury episodes" },
+    "diagnoseTreatmentQuestion": "What have you tried so far?",
+    "@diagnoseTreatmentQuestion": { "description": "Question about treatment already tried" },
+    "diagnoseTreatmentNone": "None Yet",
+    "@diagnoseTreatmentNone": { "description": "No treatment tried option" },
+    "diagnoseTreatmentRest": "Rest",
+    "@diagnoseTreatmentRest": { "description": "Rest treatment option" },
+    "diagnoseTreatmentIceHeat": "Ice / heat",
+    "@diagnoseTreatmentIceHeat": { "description": "Ice or heat treatment option" },
+    "diagnoseTreatmentPhysiotherapy": "Physiotherapy",
+    "@diagnoseTreatmentPhysiotherapy": { "description": "Physiotherapy treatment option" },
+    "diagnoseTreatmentGp": "Seen a GP",
+    "@diagnoseTreatmentGp": { "description": "General practitioner consultation option" },
+    "diagnoseTreatmentImaging": "Imaging (X-ray, MRI, ultrasound)",
+    "@diagnoseTreatmentImaging": { "description": "Diagnostic imaging option" },
+    "diagnoseTreatmentMedication": "Medication",
+    "@diagnoseTreatmentMedication": { "description": "Medication treatment option" },
+    "diagnoseOtherContext": "Anything else relevant?",
+    "@diagnoseOtherContext": { "description": "Question about additional relevant context" },
+    "diagnoseOtherContextDescription": "Optional - other conditions, medications or context worth knowing",
+    "@diagnoseOtherContextDescription": { "description": "Supporting text for the optional additional context field" },
+    "diagnoseReviewTitle": "Review Your Answers",
+    "@diagnoseReviewTitle": { "description": "Title of the final diagnosis step" },
+    "diagnoseReviewDescription": "Check everything looks right before we match you to a program",
+    "@diagnoseReviewDescription": { "description": "Supporting text on the diagnosis review screen" },
+    "diagnoseReviewInjury": "Injury",
+    "@diagnoseReviewInjury": { "description": "Title of the injury review card" },
+    "diagnoseReviewActivity": "Baseline Activity",
+    "@diagnoseReviewActivity": { "description": "Title of the activity review card" },
+    "diagnoseReviewRegion": "Region",
+    "@diagnoseReviewRegion": { "description": "Region label in the injury review card" },
+    "diagnoseReviewLocation": "Location",
+    "@diagnoseReviewLocation": { "description": "Location label in the injury review card" },
+    "diagnoseReviewMainActivity": "Main activity",
+    "@diagnoseReviewMainActivity": { "description": "Main activity label in the activity review card" },
+    "diagnoseReviewDemands": "Demands",
+    "@diagnoseReviewDemands": { "description": "Physical demands label in the activity review card" },
+    "diagnoseReviewFrequency": "Frequency",
+    "@diagnoseReviewFrequency": { "description": "Frequency label in the activity review card" },
+    "diagnoseReviewOnset": "Onset",
+    "@diagnoseReviewOnset": { "description": "Onset label in the onset review card" },
+    "diagnoseFinish": "Finish",
+    "@diagnoseFinish": { "description": "Button label to finish the diagnosis questionnaire" },
+    "homePrograms": "Programs",
+    "@homePrograms": {
+        "description": "Label for the Programs tab in the home navigation bar"
+    },
+    "homeMyProgress": "My Progress",
+    "@homeMyProgress": {
+        "description": "Label for the My Progress tab in the home navigation bar"
+    },
+    "homeMore": "More",
+    "@homeMore": {
+        "description": "Label for the More tab in the home navigation bar"
+    },
+    "explore": "Explore",
+    "@explore": {
+        "description": "Title for explore page"
+    },
+    "programs": "Programs",
+    "@programs": {
+        "description": "Label for the Programs bottom navigation tab"
+    },
+    "myProgress": "My Progress",
+    "@myProgress": {
+        "description": "Label for the My Progress bottom navigation tab"
+    },
+    "progressActivePrograms": "Active Programs",
+    "@progressActivePrograms": { "description": "Active program statistic label" },
+    "progressExercisesDone": "Exercises Done",
+    "@progressExercisesDone": { "description": "Completed exercise statistic label" },
+    "progressAssessmentsCompleted": "Assessments Completed",
+    "@progressAssessmentsCompleted": { "description": "Completed assessment statistic label" },
+    "progressCompletedPrograms": "Completed Programs",
+    "@progressCompletedPrograms": { "description": "Completed program statistic label" },
+    "progressProgramName": "Hamstring Strain Grade 03",
+    "@progressProgramName": { "description": "Sample rehabilitation program name on My Progress" },
+    "progressPhasesCompleted": "{completed}/{total} phases completed",
+    "@progressPhasesCompleted": {
+        "description": "Completed phases and total phases for a program",
+        "placeholders": {
+            "completed": { "type": "int" },
+            "total": { "type": "int" }
+        }
+    },
+    "progressStarted": "Started {date}",
+    "@progressStarted": {
+        "description": "Program start date label",
+        "placeholders": { "date": { "type": "String" } }
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Title for settings page"
+    },
+    "accountSettings": "Account Settings",
+    "@accountSettings": {
+        "description": "Menu label for account settings"
+    },
+    "notifications": "Notifications",
+    "@notifications": {
+        "description": "Menu label for notifications"
+    },
+    "contactIntroduction": "Have a question?\nGet in touch and we'll get back to you.",
+    "@contactIntroduction": { "description": "Introduction on the Contact Us screen" },
+    "contactMessage": "Message",
+    "@contactMessage": { "description": "Label for the contact message field" },
+    "contactMessageHint": "Type your message here",
+    "@contactMessageHint": { "description": "Placeholder for the contact message field" },
+    "contactMessageRequired": "Please enter your message",
+    "@contactMessageRequired": { "description": "Validation error for an empty contact message" },
+    "contactCallUs": "Call Us",
+    "@contactCallUs": { "description": "Label for the contact phone action" },
+    "contactVisitWebsite": "Visit Our Website",
+    "@contactVisitWebsite": { "description": "Label for the contact website action" },
+    "contactActionsUnavailable": "Contact actions are not available yet.",
+    "@contactActionsUnavailable": { "description": "Feedback when contact actions have not been configured" },
+    "contactUs": "Contact Us",
+    "@contactUs": {
+        "description": "Menu label for contacting support"
+    },
+    "termsAndConditions": "Terms & Conditions",
+    "@termsAndConditions": {
+        "description": "Menu label for terms and conditions"
+    },
+    "appSettings": "App Settings",
+    "@appSettings": {
+        "description": "Menu label for app settings"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "Title for profile page"
+    },
+    "more": "More",
+    "@more": {
+        "description": "Title for more page"
+    },
+    "logout": "Logout",
+    "@logout": {
+        "description": "Label for logout action"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "Label for OK action"
+    },
+    "error": "Error",
+    "@error": {
+        "description": "Generic error title"
+    },
+    "yes": "Yes",
+    "@yes": {
+        "description": "Label for yes action"
+    },
+    "no": "No",
+    "@no": {
+        "description": "Label for no action"
+    },
+    "signInFailed": "Sign In Failed",
+    "@signInFailed": {
+        "description": "Error message when sign in fails"
+    },
+    "signUpFailed": "Sign Up Failed",
+    "@signUpFailed": {
+        "description": "Error message when sign up fails"
+    },
+    "invalidEmail": "Invalid Email",
+    "@invalidEmail": {
+        "description": "Error message for invalid email format"
+    },
+    "helpSupport": "Help & Support",
+    "@helpSupport": {
+        "description": "Title for help and support page"
+    },
+    "about": "About",
+    "@about": {
+        "description": "Title for about page"
+    },
+    "account": "Account",
+    "@account": {
+        "description": "Title for account page"
+    },
+    "editProfile": "Edit Profile",
+    "@editProfile": {
+        "description": "Label for edit profile button"
+    },
+    "changePassword": "Change Password",
+    "@changePassword": {
+        "description": "Label for change password button"
+    },
+    "changePasswordSubtitle": "Stay secure and change your password",
+    "@changePasswordSubtitle": {
+        "description": "Supporting text for the change password screen"
+    },
+    "currentPassword": "Current Password",
+    "@currentPassword": {
+        "description": "Label for the current password field"
+    },
+    "newPassword": "New Password",
+    "@newPassword": {
+        "description": "Label for the new password field"
+    },
+    "confirmPassword": "Confirm Password",
+    "@confirmPassword": {
+        "description": "Label for the password confirmation field"
+    },
+    "passwordsDoNotMatch": "Passwords do not match",
+    "@passwordsDoNotMatch": {
+        "description": "Validation error when password confirmation does not match"
+    },
+    "resetPassword": "Reset Password",
+    "@resetPassword": {
+        "description": "Label for the reset password button"
+    },
+    "forgotPasswordUnavailable": "Forgot password is not available yet",
+    "@forgotPasswordUnavailable": {
+        "description": "Message when the forgot password feature is unavailable"
+    },
+    "passwordResetUnavailable": "Password reset is not available yet",
+    "@passwordResetUnavailable": {
+        "description": "Message when password reset actions have not been connected"
+    },
+    "requestFailed": "Request Failed",
+    "@requestFailed": {
+        "description": "Error title when request fails"
+    },
+    "checkEmail": "Please Check Your Email",
+    "@checkEmail": {
+        "description": "Title for email check instruction"
+    },
+    "passwordResetSent": "A password reset link has been sent to your dedicated email",
+    "@passwordResetSent": {
+        "description": "Message confirming password reset link sent"
+    },
+    "didntReceiveEmail": "Didn't receive the email?",
+    "@didntReceiveEmail": {
+        "description": "Question for missing email"
+    },
+    "characters": "characters",
+    "@characters": {
+        "description": "characters"
+    },
+    "enterPassword": "Enter your password here",
+    "@enterPassword": {
+        "description": "Hint text for password field"
+    },
+    "passwordMaxLengthError": "Maximum {maxLength} characters allowed",
+    "@passwordMaxLengthError": {
+        "description": "Validation error when the input exceeds the maximum allowed characters",
+        "placeholders": {
+            "maxLength": {
+                "type": "int",
+                "example": "20"
+            }
+        }
+    },
+    "passwordIsRequired": "Password is required",
+    "@passwordIsRequired": {
+        "description": "Error message when the password field is empty"
+    },
+    "passwordMinLengthError": "Password must be at least {minLength} characters",
+    "@passwordMinLengthError": {
+        "description": "Error message for short passwords",
+        "placeholders": {
+            "minLength": {
+                "type": "int",
+                "example": "8"
+            }
+        }
+    },
+    "pleaseEnterPassword": "Please enter your password",
+    "@pleaseEnterPassword": {
+        "description": "Error message for empty password"
+    },
+    "passwordMustContainLettersAndDigits": "Password must contain letters and digits",
+    "@passwordMustContainLettersAndDigits": {
+        "description": "Error message when password doesn't contain both letters and digits"
+    },
+    "enterDigitsOnly": "Enter digits only",
+    "@enterDigitsOnly": {
+        "description": "Validation error when non-numeric characters are entered"
+    },
+    "phoneNumberTooShort": "Phone number is too short",
+    "@phoneNumberTooShort": {
+        "description": "Validation error for incomplete phone numbers"
+    },
+    "resend": "Resend",
+    "@resend": {
+        "description": "Label for resend action"
+    },  
+    "searchCountry": "Search Country",
+    "@searchCountry": {
+        "description": "Search Country"
+    },    
+    "enterContactNumber": "Enter your contact number",
+    "@enterContactNumber": {
+        "description": "Search Country"
+    },
+    "enterEmailReset": "Enter your registered email address below and we'll send you a password reset email",
+    "@enterEmailReset": {
+        "description": "Instruction for password reset"
+    },
+    "submit": "Submit",
+    "@submit": {
+        "description": "Label for submit action"
+    },
+    "verification": "Verification",
+    "@verification": {
+        "description": "Title for verification page"
+    },
+    "logOut": "Log Out",
+    "@logOut": {
+        "description": "Label for logout action"
+    },
+    "enterVerificationCode": "Please enter your verification code",
+    "@enterVerificationCode": {
+        "description": "Instruction to enter code"
+    },
+    "verificationCodeSent": "The verification code has been sent to ",
+    "@verificationCodeSent": {
+        "description": "Message confirming code sent"
+    },
+    "resendCode": "Resend the Code",
+    "@resendCode": {
+        "description": "Label for resend code action"
+    },
+    "or": "Or",
+    "@or": {
+        "description": "Divider text"
+    },
+    "sendCodeMobile": "Send the verification code to your mobile number?",
+    "@sendCodeMobile": {
+        "description": "Question to send code to mobile"
+    },
+    "sendCode": "Send the code",
+    "@sendCode": {
+        "description": "Label for send code action"
+    },
+    "didntReceiveCode": "Didn't receive the verification code?",
+    "@didntReceiveCode": {
+        "description": "Question for missing code"
+    },
+    "agreeTo": "By continuing, you agree to our ",
+    "@agreeTo": {
+        "description": "Terms agreement prefix"
+    },
+    "termsOfService": "Terms and Conditions",
+    "@termsOfService": {
+        "description": "Link text for terms"
+    },
+    "privacyPolicy": "Privacy Policy",
+    "@privacyPolicy": {
+        "description": "Link text for privacy policy"
+    },
+    "exploreApp": "Explore The App",
+    "@exploreApp": {
+        "description": "Label for explore app action"
+    },
+    "continueAction": "Continue",
+    "@continueAction": {
+        "description": "Label for continue action"
+    },
+    "disposableEmailError": "Please use a valid email address. Disposable emails are not allowed.",
+    "@disposableEmailError": {
+        "description": "Error message for disposable email"
+    },
+    "orContinueWith": "Or continue with",
+    "@orContinueWith": {
+        "description": "Text between auth separators"
+    },
+    "enterEmailHint": "Enter your email here",
+    "@enterEmailHint": {
+        "description": "Hint text for email input"
+    },
+    "errorEnterEmail": "Please enter your email",
+    "@errorEnterEmail": {
+        "description": "Error when email is empty"
+    },
+    "errorInvalidEmailAddress": "Please enter a valid email",
+    "@errorInvalidEmailAddress": {
+        "description": "Error when email format is invalid"
+    },
+    "termsAndPrivacyConfirm": " and confirm you have read our ",
+    "@termsAndPrivacyConfirm": {
+        "description": "Text connecting terms and privacy policy"
+    },
+    "verify": "Verify",
+    "@verify": {
+        "description": "Label for verification button"
+    },
+    "verifyAccount": "Verify Account",
+    "@verifyAccount": {
+        "description": "Label for account verification button"
+    },
+    "settingsPage": "Settings Page",
+    "@settingsPage": {
+        "description": "Title for settings page content"
+    },
+    "codeResendFailed": "Code Resend Failed",
+    "@codeResendFailed": {
+        "description": "Error message when resending code fails"
+    },
+    "mobileNumber": "Mobile Number",
+    "@mobileNumber": {
+        "description": "Label for mobile number input"
+    },
+    "errorEnterMobile": "Please enter your mobile number",
+    "@errorEnterMobile": {
+        "description": "Error when mobile number is empty"
+    },
+    "getStarted": "Get Started",
+    "@getStarted": {
+        "description": "Label for get started action"
+    },
+    "skip": "Skip",
+    "@skip": {
+        "description": "Label for skip action"
+    },
+    "cancelLogout": "Cancel & Logout",
+    "@cancelLogout": {
+        "description": "Label for cancel and logout action"
+    },
+    "retryLater": "Try again later or contact support if the issue persists.",
+    "@retryLater": {
+        "description": "Message for retrying later"
+    },
+    "chat": "Chat",
+    "@chat": {
+        "description": "Label for chat navigation item"
+    },
+    "step1": "Step 1",
+    "@step1": {
+        "description": "Label for step 1 placeholder"
+    },
+    "step2": "Step 2",
+    "@step2": {
+        "description": "Label for step 2 placeholder"
+    },
+    "step3": "Step 3",
+    "@step3": {
+        "description": "Label for step 3 placeholder"
+    },
+    "passwordStrengthWeak": "Weak password",
+    "@passwordStrengthWeak": {
+        "description": "Label for weak password strength"
+    },
+    "passwordStrengthMedium": "Medium strength",
+    "@passwordStrengthMedium": {
+        "description": "Label for medium password strength"
+    },
+    "passwordStrengthStrong": "Strong password",
+    "@passwordStrengthStrong": {
+        "description": "Label for strong password strength"
+    },
+    "passwordNoSpacesError": "Password cannot contain spaces",
+    "@passwordNoSpacesError": {
+        "description": "Error message when password contains whitespace"
+    },
+    "enterDescription": "Enter description",
+    "@enterDescription": {
+        "description": "Hint text for description input"
+    },
+    "maxLengthError": "Maximum {maxLength} characters allowed",
+    "@maxLengthError": {
+        "description": "Validation error when the input exceeds the maximum allowed characters",
+        "placeholders": {
+            "maxLength": {
+                "type": "int",
+                "example": "500"
+            }
+        }
+    },
+    "noInternetConnection": "No internet. Please check your network  connection.",
+    "@noInternetConnection": {
+        "description": "Error message when the device has no network connectivity"
+    },
+    "sessionExpired": "Session expired. Please log in again.",
+    "@sessionExpired": {
+        "description": "Error message when the auth token is invalid or expired"
+    },
+    "retry": "Retry",
+    "@retry": {
+        "description": "Label for retry action button"
+    },
+    "serverConnectionError": "Unable to connect to server. Please try again.",
+    "@serverConnectionError": {
+        "description": "Error message when the server is unreachable after retries"
+    }
+}
+

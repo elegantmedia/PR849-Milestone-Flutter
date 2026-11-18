@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -53,10 +52,24 @@ class _SignInPageState extends State<SignInPage> {
         title: context.l10n.signInFailed,
         message: state.message,
       );
-    } else if (state is AuthSuccess) {
+    } else if (state is AuthSuccess && mounted) {
       TextInput.finishAutofillContext();
+     // Pages.home.go(context);
     }
   }
+
+  // Future<void> onAuthStateChanged(AuthState state) async {
+  //   if (state is AuthFailed && mounted) {
+  //     TextInput.finishAutofillContext(shouldSave: false);
+  //     await CommonDialog.alert(
+  //       context,
+  //       title: context.l10n.signInFailed,
+  //       message: state.message,
+  //     );
+  //   } else {
+  //     Pages.home.go(context);
+  //   }
+  // }
 
   @override
   void dispose() {
@@ -76,18 +89,21 @@ class _SignInPageState extends State<SignInPage> {
         return AbsorbPointer(
           absorbing: snapshot.data is AuthLoading,
           child: Scaffold(
-            appBar: AppBar(
-              title: Text(context.l10n.signIn),
+            appBar: const CommonAppBar(
+              content: CommonAppBarContent.logo,
+              showBackButton: true,
             ),
             body: AutofillGroup(
               child: Form(
                 key: _formKey,
                 child: ExtendedColumn(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-                      child: AppLogo(aspectRatio: 16 / 9),
+                    const RelativeGap(mainAxisExtent: 0.02),
+                    Text(
+                      context.l10n.signIn,
+                      style: context.headline1(),
                     ),
+                    const RelativeGap(mainAxisExtent: 0.05),
                     AuthFormFields.email(
                       controller: _emailController,
                       focusNode: _emailFocusNode,
@@ -113,7 +129,8 @@ class _SignInPageState extends State<SignInPage> {
                         textStyle: context.bodyDefault(),
                       ),
                     ),
-                    Gaps.gapMd16,
+                    // Gaps.gapMd16,
+                    const Spacer(),
                     CommonButton.primary(
                       label: context.l10n.signIn,
                       isLoading: snapshot.data is AuthLoading,
@@ -127,75 +144,29 @@ class _SignInPageState extends State<SignInPage> {
                           );
                         }
                       },
-                    ).pad(const EdgeInsets.all(16)),
-                    Gaps.gapXxl48,
-                    SizedBox(
-                      width: double.infinity,
-                      child: Center(
-                        child: Text(context.l10n.orContinueWith, style: context.bodyDefault()),
-                      ),
-                    ),
+                    ).pad(const EdgeInsets.symmetric(horizontal: 16)),
                     Gaps.gapMd16,
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (Platform.isIOS)
-                        Container(
-                          decoration: BoxDecoration(
-                            color: context.colorScheme.surface,
-                            borderRadius: const BorderRadius.all(Radius.circular(12)),
-                          ),
-                          child: IconButton(
-                            icon: const FaIcon(FontAwesomeIcons.apple),
-                            onPressed: () {},
+                      children: [
+                        Text(context.l10n.dontHaveAccount),
+                        Center(
+                          child: CommonButton.text(
+                            onPressed: () => Pages.signUp.go(context),
+                            label: context.l10n.signUp,
+                            textStyle: context.bodyDefault().bold,
                           ),
                         ),
-                      Gaps.gapMd16,
-                      Container(
-                        decoration: BoxDecoration(
-                          color: context.colorScheme.surface,
-                          borderRadius: const BorderRadius.all(Radius.circular(12)),
-                        ),
-                        child: IconButton(
-                          icon: const FaIcon(FontAwesomeIcons.google),
-                          onPressed: () {},
-                        ),
-                      ),
-                      Gaps.gapMd16,
-                      Container(
-                        decoration: BoxDecoration(
-                          color: context.colorScheme.surface,
-                          borderRadius: const BorderRadius.all(Radius.circular(12)),
-                        ),
-                        child: IconButton(
-                          icon: const FaIcon(FontAwesomeIcons.facebookF),
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  ),
-                  Gaps.gapMd16,
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(context.l10n.dontHaveAccount),
-                      Center(
-                        child: CommonButton.text(
-                          onPressed: () => Pages.signUp.go(context),
-                          label: context.l10n.signUp,
-                          textStyle: context.bodyDefault().bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const RelativeGap(mainAxisExtent: 0.02),
-                ],
+                      ],
+                    ),
+                    const RelativeGap(mainAxisExtent: 0.02),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      );
+        );
       },
     );
   }

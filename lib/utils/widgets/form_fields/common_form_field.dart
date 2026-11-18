@@ -146,7 +146,7 @@ class CommonTextField extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         // Title label
-        if (title != null) _buildTitle(theme, context),
+        if (title != null) _buildTitle(context),
 
         // Text field attempting to animate the fill color smoothy
         TweenAnimationBuilder<Color?>(
@@ -189,13 +189,13 @@ class CommonTextField extends StatelessWidget {
   }
 
   /// Builds the title label widget.
-  Widget _buildTitle(ThemeData theme, BuildContext context) {
+  Widget _buildTitle(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title!,
-          style: context.formLabel(),
+          style: context.bodyDefault(weight: FontWeight.w700),
         ),
         Gaps.gapSm8,
       ],

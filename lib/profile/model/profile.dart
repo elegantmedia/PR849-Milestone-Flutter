@@ -3,6 +3,7 @@ class UserProfile {
     required this.uuid,
     required this.firstName,
     required this.lastName,
+    this.imageUrl = '',
     this.isEmailVerified = false,
     this.isProfileCompleted = false,
   });
@@ -10,8 +11,9 @@ class UserProfile {
   factory UserProfile.fromJson(Map<String, dynamic> json) {
     return UserProfile(
       uuid: json['uuid'] as String? ?? '',
-      firstName: json['firstName'] as String? ?? '',
-      lastName: json['lastName'] as String? ?? '',
+      firstName: json['firstName'] as String? ?? 'John',
+      lastName: json['lastName'] as String? ?? 'Doe',
+      imageUrl: json['imageUrl'] as String? ?? '',
       isEmailVerified: (json['is_email_verified'] ?? false) as bool,
       isProfileCompleted: (json['is_profile_completed'] ?? false) as bool,
     );
@@ -20,6 +22,7 @@ class UserProfile {
   String uuid;
   String firstName;
   String lastName;
+  String imageUrl;
   bool isEmailVerified = false;
   bool isProfileCompleted = false;
   // Add other fields as needed
@@ -29,6 +32,7 @@ class UserProfile {
       'uuid': uuid,
       'firstName': firstName,
       'lastName': lastName,
+      'imageUrl': imageUrl,
       'is_email_verified': isEmailVerified,
       'is_profile_completed': isProfileCompleted,
     };

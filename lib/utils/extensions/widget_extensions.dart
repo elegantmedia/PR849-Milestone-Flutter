@@ -81,7 +81,6 @@ extension WidgetExtensions on Widget {
   Widget get marginAll24 => margin(AppSpacing.allLg24);
   Widget get marginAll32 => margin(AppSpacing.allXl32);
 
-
   // ═══════════════════════════════════════════════════════════════
   // BOX DECORATION
   // ════════════════════════════

@@ -19,19 +19,19 @@ class ShellController extends StatelessWidget {
         onTap: navigationShell.goBranch,
         items: [
           BottomNavigationBarItem(
-            icon: const FaIcon(FontAwesomeIcons.house),
+            icon: const Icon(Icons.home_filled),
             label: context.l10n.home,
           ),
           BottomNavigationBarItem(
-            icon: const FaIcon(FontAwesomeIcons.solidMessage),
-            label: context.l10n.chat,
+            icon: const Icon(Icons.menu_book_outlined),
+            label: context.l10n.programs,
           ),
           BottomNavigationBarItem(
-            icon: const FaIcon(FontAwesomeIcons.solidCompass),
-            label: context.l10n.explore,
+            icon: const Icon(Icons.bar_chart),
+            label: context.l10n.myProgress,
           ),
           BottomNavigationBarItem(
-            icon: const FaIcon(FontAwesomeIcons.ellipsisVertical),
+            icon: const Icon(Icons.more_vert),
             label: context.l10n.more,
           ),
         ],

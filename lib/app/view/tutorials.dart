@@ -207,23 +207,20 @@ class _TutorialPageState extends State<TutorialPage> {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              child: SizedBox(
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    3,
-                    (index) => AnimatedContainer(
-                      duration: const Duration(milliseconds: 300),
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
-                      width: _currentIndex == index ? 16 : 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        color: _currentIndex == index ? context.colorScheme.primary : context.colorScheme.outlineVariant,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
+            SizedBox(
+              width: double.infinity,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  3,
+                  (index) => AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    width: _currentIndex == index ? 16 : 8,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: _currentIndex == index ? context.colorScheme.primary : context.colorScheme.outlineVariant,
+                      borderRadius: BorderRadius.circular(4),
                     ),
                   ),
                 ),

@@ -300,26 +300,24 @@ class _PhoneFormFieldState extends State<PhoneFormField> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    _countryCode,
-                    style: context.bodyLarge(
-                      color: widget.enabled 
-                        ? colorScheme.onSurface 
-                        : colorScheme.onSurface.withValues(alpha: 0.38),
-                    ),
-                    overflow: TextOverflow.ellipsis,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  _countryCode,
+                  style: context.bodyLarge(
+                    color: widget.enabled ? colorScheme.onSurface : colorScheme.onSurface.withValues(alpha: 0.38),
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-                Icon(
-                  Icons.expand_more,
-                  size: 24,
-                  color: widget.enabled ? colorScheme.onSurface : colorScheme.onSurface.withValues(alpha: 0.38),
-                ),
-              ],
-            ),
+              ),
+              Icon(
+                Icons.expand_more,
+                size: 24,
+                color: widget.enabled ? colorScheme.onSurface : colorScheme.onSurface.withValues(alpha: 0.38),
+              ),
+            ],
+          ),
           ),
         ),
       ),

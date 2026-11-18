@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:milestone/app/app.dart';
 import 'package:milestone/profile/profile.dart';
 import 'package:milestone/utils/utils.dart';
 
@@ -25,8 +24,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.l10n.account),
+      appBar: CommonAppBar(
+        title: context.l10n.account,
+        showBackButton: true,
       ),
       body: StreamBuilder<ProfileState>(
         stream: _userProfileService.profileStateStream,
@@ -37,7 +37,20 @@ class _MyProfilePageState extends State<MyProfilePage> {
               child: CircularProgressIndicator(),
             );
           }
+          final imageUrl = userProfile.imageUrl.trim();
+          final imagePlaceholder = ColoredBox(
+            color: context.themeColors.profilePlaceholderColor,
+            child: Center(
+              child: Icon(
+                Icons.person_outline,
+                size: 48,
+                color: context.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          );
+
           return ExtendedColumn(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             children: [
               Gaps.gapMd16,
               SizedBox(
@@ -47,8 +60,23 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: SizedBox(
+                          width: 96,
+                          height: 96,
+                          child: imageUrl.isEmpty
+                              ? imagePlaceholder
+                              : Image.network(
+                                  imageUrl,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) => imagePlaceholder,
+                                  loadingBuilder: (context, child, loadingProgress) => loadingProgress == null ? child : imagePlaceholder,
+                                ),
+                        ),
+                      ),
                       Positioned(
-                        bottom: 0,
+                        bottom: -14,
                         right: 0,
                         left: 0,
                         child: Center(
@@ -85,59 +113,20 @@ class _MyProfilePageState extends State<MyProfilePage> {
               Gaps.gapSm8,
               const Spacer(),
               CommonButton.primary(
-                onPressed: () {},
+                onPressed: () => Pages.editProfile.go(context),
                 label: context.l10n.editProfile,
               ),
               Gaps.gapMd16,
               CommonButton.outline(
-                onPressed: () {},
+                onPressed: () {
+                  Pages.changePassword.go(context);
+                },
                 label: context.l10n.changePassword,
               ),
               const RelativeGap(mainAxisExtent: 0.05),
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class UserDetailItem extends StatelessWidget {
-  const UserDetailItem({
-    required this.title,
-    required this.value,
-    super.key,
-  });
-
-  final String title;
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: context.colorScheme.outline,
-        ),
-      ),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: context.bodyDefault(),
-          ),
-          const Spacer(),
-          Text(
-            value,
-            style: context.bodyDefault(
-              color: context.colorScheme.onSurface.withValues(alpha: 0.6),
-            ),
-          ),
-        ],
       ),
     );
   }

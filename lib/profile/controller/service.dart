@@ -1,7 +1,8 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:milestone/profile/profile.dart';
+import 'package:rxdart/rxdart.dart';
 
 /// A service class that extends [ProfileRepository].
 ///

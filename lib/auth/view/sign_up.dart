@@ -161,17 +161,17 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 2),
                             child: Checkbox(
-                            value: _acceptedTerms,
-                            activeColor: context.colorScheme.secondary,
-                            side: BorderSide(color: context.colorScheme.secondary),
-                            visualDensity: VisualDensity.compact,
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            onChanged: (value) {
-                              setState(() {
-                                _acceptedTerms = value ?? false;
-                              });
-                            },
-                          ),
+                              value: _acceptedTerms,
+                              activeColor: context.colorScheme.secondary,
+                              side: BorderSide(color: context.colorScheme.secondary),
+                              visualDensity: VisualDensity.compact,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              onChanged: (value) {
+                                setState(() {
+                                  _acceptedTerms = value ?? false;
+                                });
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(width: 10),
@@ -191,7 +191,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       .bold,
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      // TODO(ishanga): Add Terms and Conditions page
+                                      // --TODO(ishanga): Add Terms and Conditions page
                                     },
                                 ),
                                 TextSpan(text: context.l10n.termsAndPrivacyConfirm),
@@ -204,7 +204,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       .bold,
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      // TODO(ishanga): Add Privacy Policy page
+                                      // --TODO(ishanga): Add Privacy Policy page
                                     },
                                 ),
                                 const TextSpan(text: '.'),

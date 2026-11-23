@@ -294,7 +294,7 @@ class ThemeServiceProvider with ChangeNotifier {
         const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
-          systemNavigationBarColor: Colors.white,
+          systemNavigationBarColor: Colors.black,
           systemNavigationBarIconBrightness: Brightness.dark,
         ),
       );

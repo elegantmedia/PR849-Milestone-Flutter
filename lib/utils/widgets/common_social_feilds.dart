@@ -29,12 +29,12 @@ class CommonSocialField extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           child: Row(
             children: [
-              Expanded(child: Text(label, style: context.bodyLarge())),
+              Expanded(child: Text(label, style: context.bodyDefault())),
               const SizedBox(width: 16),
-              Icon(icon, size: 28, color: colors.secondary),
+              Icon(icon, size: 24, color: colors.secondary),
             ],
           ),
         ),

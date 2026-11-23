@@ -5,6 +5,7 @@ import 'package:milestone/change_password/view/change_password.dart';
 import 'package:milestone/contact_us/contact_us.dart';
 import 'package:milestone/diagnose_my_injury/diagnose_my_injury.dart';
 import 'package:milestone/home/home.dart';
+import 'package:milestone/legal_information/legal_information.dart';
 import 'package:milestone/more/more.dart';
 import 'package:milestone/my_progress/my_progress.dart';
 import 'package:milestone/profile/profile.dart';
@@ -81,27 +82,7 @@ class AppRouter {
           child: const CodeVerificationPage(),
         ),
       ),
-      GoRoute(
-        path: Pages.tutorials.toPath(),
-        name: Pages.tutorials.toPathName(),
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: const TutorialPage(),
-        ),
-      ),
-      GoRoute(
-        path: Pages.completeAccount.toPath(),
-        name: Pages.completeAccount.toPathName(),
-        pageBuilder: (context, state) => MaterialPage(
-          key: state.pageKey,
-          child: ChangeNotifierProvider(
-            create: (context) => ProfileCompleteController(
-              currentProfile: GetIt.instance<UserProfileService>().userProfile,
-            ),
-            child: const CompleteProfileFlow(),
-          ),
-        ),
-      ),
+     
       StatefulShellRoute.indexedStack(
         builder: (context, state, statefulNavigationShell) => ShellController(navigationShell: statefulNavigationShell),
         branches: [
@@ -221,6 +202,18 @@ class AppRouter {
                       key: state.pageKey,
                       child: const SettingsPage(),
                     ),
+                  ),
+                  GoRoute(
+                    path: Pages.legalInformation.toPath(isSubRoute: true),
+                    name: Pages.legalInformation.toPathName(),
+                    parentNavigatorKey: _rootNavigatorKey,
+                    pageBuilder: (context, state) {
+                      final key = state.uri.queryParameters['key'] ?? (state.extra as String?) ?? LegalKeys.termsAndConditions;
+                      return MaterialPage(
+                        key: state.pageKey,
+                        child: LegalInformationPage(legalKey: key),
+                      );
+                    },
                   ),
                 ],
               ),

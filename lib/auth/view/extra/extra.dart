@@ -1,2 +1,2 @@
-export './forgot_password.dart';
-export './verify.dart';
+export 'forgot_password.dart';
+export 'verify.dart';

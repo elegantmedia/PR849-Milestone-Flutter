@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:milestone/app/controller/controller.dart';
 import 'package:milestone/diagnose_my_injury/model/model.dart';
 import 'package:milestone/diagnose_my_injury/widgets/widgets.dart';

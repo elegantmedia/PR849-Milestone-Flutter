@@ -11,7 +11,7 @@ class AuthRepository extends ApiClient {
   /// Returns a [Future] that completes with a [UserProfileWithToken] object if the registration is successful.
   /// Throws an [Exception] if the registration fails.
   Future<UserProfileWithToken> register(RegisterRequestModel request) async {
-    try {      
+    try {
       final tempPayload = {
         'result': true,
         'message': 'User registered successfully',
@@ -34,7 +34,7 @@ class AuthRepository extends ApiClient {
         return UserProfileWithToken.fromJson(apiResponse.data as Map<String, dynamic>);
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 
@@ -55,20 +55,20 @@ class AuthRepository extends ApiClient {
         },
       };
       await Future.delayed(const Duration(seconds: 2), () {});
-      final response = Response<dynamic>(requestOptions: RequestOptions(path: AuthEndpoints.login), data: tempPayload);      
+      final response = Response<dynamic>(requestOptions: RequestOptions(path: AuthEndpoints.login), data: tempPayload);
       final apiResponse = ApiResponse.fromJson(response.data as Map<String, dynamic>);
 
-      // real API call goes here    
+      // real API call goes here
       // final response = await post(AuthEndpoints.login, data: request.toFormData());
       // final apiResponse = ApiResponse.fromJson(response.data as Map<String, dynamic>);
-      
+
       if (apiResponse is ApiFailureResponse) {
         throw Exception(apiResponse.message);
       } else {
         return UserProfileWithToken.fromJson(apiResponse.data as Map<String, dynamic>);
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 
@@ -77,7 +77,7 @@ class AuthRepository extends ApiClient {
   /// Throws an [Exception] if the logout fails.
   Future<bool> logOut({required String token}) async {
     try {
-      // TODO(ishanga): Remove the following section after implementing the API call. Use the `post` method to make the API call.
+      // --TODO(ishanga): Remove the following section after implementing the API call. Use the `post` method to make the API call.
       // return Session if successful, throw Exception if failed
       final tempPayload = {
         'result': true,
@@ -93,7 +93,7 @@ class AuthRepository extends ApiClient {
         return true;
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 
@@ -102,7 +102,7 @@ class AuthRepository extends ApiClient {
   /// Throws an [Exception] if the resend fails.
   Future<bool> resendVerifyCode({required String token}) async {
     try {
-      // TODO(ishanga): Remove the following section after implementing the API call. Use the `post` method to make the API call.
+      // --TODO(ishanga): Remove the following section after implementing the API call. Use the `post` method to make the API call.
       // return Session if successful, throw Exception if failed
       final tempPayload = {
         'result': true,
@@ -118,7 +118,7 @@ class AuthRepository extends ApiClient {
         return true;
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 
@@ -127,7 +127,7 @@ class AuthRepository extends ApiClient {
   /// Throws an [Exception] if the verification fails.
   Future<UserProfile> verifyEmail({required String code, required String token}) async {
     try {
-      // TODO(ishanga): Remove the following section after implementing the API call. Use the `post` method to make the API call.
+      // --TODO(ishanga): Remove the following section after implementing the API call. Use the `post` method to make the API call.
       // return UserProfile if successful, throw Exception if failed
       final tempPayload = {
         'result': true,
@@ -150,10 +150,10 @@ class AuthRepository extends ApiClient {
         return UserProfile.fromJson(apiResponse.data as Map<String, dynamic>);
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
-  
+
   /// Fetches the current user's profile information from the server.
   ///
   /// This method makes a GET request to the '/profile' endpoint with the provided
@@ -166,10 +166,10 @@ class AuthRepository extends ApiClient {
   ///   A [Future] that resolves to a [UserProfile] object containing the user's
   ///   profile information.
   Future<UserProfile> getCurrentUser({required String token}) async {
-    try {      
+    try {
       // final response = await get(AuthEndpoints.profile);
-      // final apiResponse = ApiResponse.fromJson(response.data as Map<String, dynamic>);      
-      // TODO(ishanga): Remove the following section after implementing the API call. Use the `get` method to make the API call.
+      // final apiResponse = ApiResponse.fromJson(response.data as Map<String, dynamic>);
+      // --TODO(ishanga): Remove the following section after implementing the API call. Use the `get` method to make the API call.
       // return UserProfile if successful, throw Exception if failed
       final data = {
         'result': true,
@@ -189,7 +189,7 @@ class AuthRepository extends ApiClient {
         return UserProfile.fromJson(apiResponse.data as Map<String, dynamic>);
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 }

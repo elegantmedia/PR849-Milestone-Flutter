@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:milestone/app/controller/app_text_styles.dart';
+import 'package:milestone/legal_information/legal_information.dart';
 import 'package:milestone/more/more.dart';
 import 'package:milestone/utils/utils.dart';
 
@@ -30,17 +31,23 @@ class MorePage extends StatelessWidget {
       MenuItem(
         title: context.l10n.termsAndConditions,
         icon: Icons.description,
+        onTap: () => Pages.legalInformation.push<void>(
+          context,
+          queryParams: {'key': LegalKeys.termsAndConditions},
+        ),
       ),
       MenuItem(
         title: context.l10n.privacyPolicy,
         icon: Icons.shield,
+        onTap: () => Pages.legalInformation.push<void>(
+          context,
+          queryParams: {'key': LegalKeys.privacyPolicy},
+        ),
       ),
       MenuItem(
         title: context.l10n.appSettings,
         icon: Icons.settings,
-        // onTap: () {
-        //   // Pages.settings.go(context);
-        // },
+        onTap: () => Pages.settings.push<void>(context),
       ),
       MenuItem(
         title: context.l10n.logout,

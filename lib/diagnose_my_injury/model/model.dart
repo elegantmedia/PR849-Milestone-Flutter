@@ -1,1 +1,1 @@
-export './diagnosis_option.dart';
+export 'diagnosis_option.dart';

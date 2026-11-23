@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-// TODO(ishanga): Add comprehensive logging and metrics support throughout the retry system
+// --TODO(ishanga): Add comprehensive logging and metrics support throughout the retry system
 // Consider integrating with structured logging frameworks for better observability
 // Implement memory optimization for long-running retry operations
 // Large attempt histories could consume significant memory in high-throughput scenarios
@@ -35,7 +35,7 @@ class ExponentialBackoffStrategy implements RetryStrategy {
     if (attempt <= 0) return Duration.zero;
 
     final randomGenerator = random ?? math.Random();
-    // TODO(ishanga): Improve jitter distribution - current implementation can produce negative multipliers
+    // --TODO(ishanga): Improve jitter distribution - current implementation can produce negative multipliers
     // Consider using a more sophisticated jitter algorithm like decorrelated jitter
     final rf = randomizationFactor * (randomGenerator.nextDouble() * 2 - 1) + 1;
     final exp = math.min(attempt, 31);
@@ -57,7 +57,7 @@ class LinearBackoffStrategy implements RetryStrategy {
   @override
   Duration getDelay(int attempt) {
     if (attempt <= 0) return Duration.zero;
-    // TODO(ishanga): Add overflow protection for large attempt values
+    // --TODO(ishanga): Add overflow protection for large attempt values
     final delay = baseDelay * attempt;
     return delay < maxDelay ? delay : maxDelay;
   }
@@ -128,7 +128,7 @@ class RetryOptions {
 
       try {
         final future = fn(attempt);
-        // TODO(ishanga): Improve timeout handling - consider per-operation timeout vs cumulative timeout
+        // --TODO(ishanga): Improve timeout handling - consider per-operation timeout vs cumulative timeout
         // Current implementation only handles per-attempt timeout, not total operation timeout
         final result = timeoutPerAttempt != null ? await Future.value(future).timeout(timeoutPerAttempt!) : await future;
 
@@ -162,7 +162,7 @@ class RetryOptions {
         final shouldRetry = retryIf == null || await retryIf(e);
 
         if (!shouldRetry || attempt >= maxAttempts) {
-          // TODO(ishanga): Enhance error context - include retry history and operation details in final error
+          // --TODO(ishanga): Enhance error context - include retry history and operation details in final error
           // Consider wrapping original error with retry context information
           // Preserve the original error type, but doing this will require careful handling
           // when comparing errors in retryIf function
@@ -179,7 +179,7 @@ class RetryOptions {
 
         if (attempt < maxAttempts) {
           final delay = strategy.getDelay(attempt);
-          // TODO(ishanga): Add cancellation support during delay period
+          // --TODO(ishanga): Add cancellation support during delay period
           // The delay should be interruptible by cancellation token
           await Future<void>.delayed(delay);
         }
@@ -232,9 +232,9 @@ class CircuitBreaker {
   DateTime? _lastFailureTime;
   bool _isOpen = false;
 
-  // TODO(ishanga): Implement half-open state for gradual recovery
+  // --TODO(ishanga): Implement half-open state for gradual recovery
   // Circuit breaker should have three states: closed, open, half-open
-  // TODO(ishanga): Add thread safety considerations for isolate usage
+  // --TODO(ishanga): Add thread safety considerations for isolate usage
   // Consider using atomic operations or synchronization primitives
   bool get isOpen {
     if (_isOpen && _lastFailureTime != null) {

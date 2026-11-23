@@ -89,9 +89,9 @@ class _ContactUsViewState extends State<ContactUsView> {
                           CommonButton.primary(
                             label: l10n.submit,
                             onPressed: _submit,
-                            minimumSize: const Size.fromHeight(56),
+                            // minimumSize: const Size.fromHeight(56),
                           ),
-                          const SizedBox(height: 48),
+                          //const SizedBox(height: 48),
                         ],
                       ),
                     ),

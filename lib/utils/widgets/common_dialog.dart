@@ -69,7 +69,7 @@ class CommonDialog {
             textStyle: context.alertDialogButton(),
             onPressed: () => Navigator.of(context).pop(true),
             foregroundColor: effectiveConfirmColor,
-            label: confirmText ?? context.l10n.yes,            
+            label: confirmText ?? context.l10n.yes,
           ),
         ],
       ),
@@ -125,7 +125,7 @@ class CommonDialog {
     List<Widget>? actions,
     List<DialogAction>? dialogActions,
   }) async {
-    return showDialog<T>(
+    return await showDialog<T>(
       context: context,
       builder: (dialogContext) => AlertDialog.adaptive(
         title: Text(title),
@@ -159,7 +159,7 @@ class CommonDialog {
     required List<DialogAction> actions,
     bool barrierDismissible = true,
   }) async {
-    return showDialog<T>(
+    return await showDialog<T>(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (dialogContext) => AlertDialog.adaptive(

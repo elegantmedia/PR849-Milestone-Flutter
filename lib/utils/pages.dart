@@ -23,6 +23,7 @@ enum Pages {
   profile,
   editProfile,
   changePassword,
+  legalInformation,
 }
 
 extension PagesExtension on Pages {

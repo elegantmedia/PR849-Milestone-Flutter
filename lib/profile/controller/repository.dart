@@ -3,13 +3,13 @@ import 'package:milestone/profile/profile.dart';
 import 'package:milestone/utils/utils.dart';
 
 class ProfileRepository extends ApiClient {
-  ProfileRepository(): super(interceptors: [AuthInterceptor(rejectIfNoSession: true)]);
+  ProfileRepository() : super(interceptors: [AuthInterceptor(rejectIfNoSession: true)]);
 
   /// Fetches the user profile from the server.
   /// Returns a [UserProfile] object if successful, otherwise throws an error.
   Future<UserProfile> getProfile() async {
     try {
-      // TODO(ishanga): Remove the following section after implementing the API call. Use the `get` method to make the API call.
+      // --TODO(ishanga): Remove the following section after implementing the API call. Use the `get` method to make the API call.
       final response = Response<dynamic>(requestOptions: RequestOptions(path: '/profile'));
       // real API call goes here
 
@@ -20,13 +20,13 @@ class ProfileRepository extends ApiClient {
         return UserProfile.fromJson(apiResponse.data as Map<String, dynamic>);
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 
   Future<UserProfile> updateProfile(UpdateProfileRequest request) async {
     try {
-      // TODO(ishanga): Remove the following section after implementing the API call. Use the `put` method to make the API call.
+      // --TODO(ishanga): Remove the following section after implementing the API call. Use the `put` method to make the API call.
       final response = Response<dynamic>(requestOptions: RequestOptions(path: '/profile'), data: request.toJson());
       // real API call goes here
 
@@ -37,7 +37,7 @@ class ProfileRepository extends ApiClient {
         return UserProfile.fromJson(apiResponse.data as Map<String, dynamic>);
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 
@@ -45,7 +45,7 @@ class ProfileRepository extends ApiClient {
   /// Returns a [bool] indicating success or failure.
   Future<bool> deleteProfile() async {
     try {
-      // TODO(ishanga): Remove the following section after implementing the API call. Use the `delete` method to make the API call.
+      // --TODO(ishanga): Remove the following section after implementing the API call. Use the `delete` method to make the API call.
       final response = Response<dynamic>(requestOptions: RequestOptions(path: '/profile'));
       // real API call goes here
 
@@ -56,7 +56,7 @@ class ProfileRepository extends ApiClient {
         return true;
       }
     } on Exception catch (e) {
-      return onError(e);
+      return await onError(e);
     }
   }
 }
